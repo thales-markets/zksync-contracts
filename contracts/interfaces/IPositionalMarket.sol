@@ -25,14 +25,7 @@ interface IPositionalMarket {
 
     function times() external view returns (uint maturity, uint destructino);
 
-    function getOracleDetails()
-        external
-        view
-        returns (
-            bytes32 key,
-            uint strikePrice,
-            uint finalPrice
-        );
+    function getOracleDetails() external view returns (bytes32 key, uint strikePrice, uint finalPrice);
 
     function fees() external view returns (uint poolFee, uint creatorFee);
 

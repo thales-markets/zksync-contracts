@@ -139,13 +139,7 @@ contract TherundownConsumerTest is ChainlinkClient {
         sendChainlinkRequest(req, _payment);
     }
 
-    function requestGames(
-        bytes32 _specId,
-        uint256 _payment,
-        string memory _market,
-        uint256 _sportId,
-        uint256 _date
-    ) public {
+    function requestGames(bytes32 _specId, uint256 _payment, string memory _market, uint256 _sportId, uint256 _date) public {
         Chainlink.Request memory req = buildChainlinkRequest(_specId, address(this), this.fulfillGames.selector);
 
         req.addUint("date", _date);

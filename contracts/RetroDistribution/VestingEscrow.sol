@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-4.4.1/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts-4.4.1/utils/math/Math.sol";
-import "@openzeppelin/contracts-4.4.1/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts-4.4.1/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/utils/math/Math.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "../utils/Owned.sol";
 
 contract VestingEscrow is ReentrancyGuard, Owned {
@@ -21,12 +21,7 @@ contract VestingEscrow is ReentrancyGuard, Owned {
     uint256 public initialLockedSupply;
     uint256 public unallocatedSupply;
 
-    constructor(
-        address _owner,
-        address _token,
-        uint256 _startTime,
-        uint256 _endTime
-    ) Owned(_owner) {
+    constructor(address _owner, address _token, uint256 _startTime, uint256 _endTime) Owned(_owner) {
         require(_startTime >= block.timestamp, "Start time must be in future");
         require(_endTime > _startTime, "End time must be greater than start time");
 

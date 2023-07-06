@@ -37,7 +37,7 @@ contract ProxyOwned {
         emit OwnerChanged(owner, proxyAddress);
     }
 
-    modifier onlyOwner {
+    modifier onlyOwner() {
         _onlyOwner();
         _;
     }

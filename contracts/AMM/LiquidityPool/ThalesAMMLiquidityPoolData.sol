@@ -68,11 +68,10 @@ contract ThalesAMMLiquidityPoolData is Initializable, ProxyOwned, ProxyPausable 
     /// @param liquidityPool ThalesAMMLiquidityPool
     /// @param user address of the user
     /// @return UserLiquidityPoolData
-    function getUserLiquidityPoolData(ThalesAMMLiquidityPool liquidityPool, address user)
-        external
-        view
-        returns (UserLiquidityPoolData memory)
-    {
+    function getUserLiquidityPoolData(
+        ThalesAMMLiquidityPool liquidityPool,
+        address user
+    ) external view returns (UserLiquidityPoolData memory) {
         uint round = liquidityPool.round();
         (uint maxDepositForUser, uint availableToDepositForUser, uint stakedThalesForUser) = liquidityPool
             .getMaxAvailableDepositForUser(user);

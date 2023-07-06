@@ -56,7 +56,7 @@ async function main() {
 	const SportMarketManagerDeployed = await SportMarketManager.attach(SportMarketManagerAddress);
 
 	const PaymentTokenContract = await ethers.getContractFactory(
-		'@openzeppelin/contracts-4.4.1/token/ERC20/ERC20.sol:ERC20'
+		'@openzeppelin/contracts/token/ERC20/ERC20.sol:ERC20'
 	);
 	const PaymentTokenDeployed = await PaymentTokenContract.attach(PaymentToken);
 	const SportMarketFactoryAddress = getTargetAddress('SportPositionalMarketFactory', network);

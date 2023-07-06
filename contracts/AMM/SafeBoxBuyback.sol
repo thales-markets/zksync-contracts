@@ -79,7 +79,7 @@ contract SafeBoxBuyback is ProxyOwned, Initializable, ProxyReentrancyGuard {
             recipient: address(this),
             deadline: block.timestamp + 15,
             amountIn: amountIn,
-            amountOutMinimum: (amountIn * ratio * _minAccepted) / (100 * 10**18)
+            amountOutMinimum: (amountIn * ratio * _minAccepted) / (100 * 10 ** 18)
         });
 
         // The call to `exactInput` executes the swap.
@@ -92,15 +92,11 @@ contract SafeBoxBuyback is ProxyOwned, Initializable, ProxyReentrancyGuard {
     /// @param tokenB Address of second token
     /// @param poolFee Fee value of tokenA/tokenB pool
     /// @return ratio tokenA/tokenB ratio
-    function _getRatio(
-        address tokenA,
-        address tokenB,
-        uint24 poolFee
-    ) internal view returns (uint256 ratio) {
+    function _getRatio(address tokenA, address tokenB, uint24 poolFee) internal view returns (uint256 ratio) {
         uint256 ratioA = _getWETHPoolRatio(tokenA, poolFee);
         uint256 ratioB = _getWETHPoolRatio(tokenB, poolFee);
 
-        ratio = (ratioA * 10**18) / ratioB;
+        ratio = (ratioA * 10 ** 18) / ratioB;
     }
 
     /// @notice _getWETHPoolRatio returns ratio between tokenA and WETH based on prices fetched from
@@ -114,7 +110,7 @@ contract SafeBoxBuyback is ProxyOwned, Initializable, ProxyReentrancyGuard {
         (uint160 sqrtPriceX96token, , , , , , ) = IUniswapV3Pool(pool).slot0();
         if (IUniswapV3Pool(pool).token0() == WETH9) {
             // ratio is 10^18/sqrtPrice - multiply again with 10^18 to convert to decimal
-            ratio = UniswapMath.mulDiv(10**18, 10**18, _getPriceFromSqrtPrice(sqrtPriceX96token));
+            ratio = UniswapMath.mulDiv(10 ** 18, 10 ** 18, _getPriceFromSqrtPrice(sqrtPriceX96token));
         } else {
             ratio = _getPriceFromSqrtPrice(sqrtPriceX96token);
         }
@@ -125,7 +121,7 @@ contract SafeBoxBuyback is ProxyOwned, Initializable, ProxyReentrancyGuard {
     /// @return Calculated price
     function _getPriceFromSqrtPrice(uint160 sqrtPriceX96) internal pure returns (uint256) {
         uint256 price = UniswapMath.mulDiv(sqrtPriceX96, sqrtPriceX96, UniswapMath.Q96);
-        return UniswapMath.mulDiv(price, 10**18, UniswapMath.Q96);
+        return UniswapMath.mulDiv(price, 10 ** 18, UniswapMath.Q96);
     }
 
     function getTicksFromLastBuys() external view returns (uint) {

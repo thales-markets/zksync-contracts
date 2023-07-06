@@ -65,7 +65,7 @@ contract ExoticUSD is ERC20, Ownable {
         paused = _paused;
         emit PausedChanged(_paused);
     }
-    
+
     event NewDefaultAmount(uint amount);
     event PausedChanged(bool paused);
     event NameChanged(string name);

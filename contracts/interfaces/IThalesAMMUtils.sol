@@ -22,12 +22,7 @@ interface IThalesAMMUtils {
         uint max_spread;
     }
 
-    function calculateOdds(
-        uint _price,
-        uint strike,
-        uint timeLeftInDays,
-        uint volatility
-    ) external view returns (uint);
+    function calculateOdds(uint _price, uint strike, uint timeLeftInDays, uint volatility) external view returns (uint);
 
     function calculateDiscount(DiscountParams memory params) external view returns (int);
 
@@ -55,8 +50,8 @@ interface IThalesAMMUtils {
         address addressToCheck
     ) external view returns (uint balance, uint balanceOtherSide);
 
-    function getBalanceOfPositionsOnMarket(address market, address addressToCheck)
-        external
-        view
-        returns (uint upBalance, uint downBalance);
+    function getBalanceOfPositionsOnMarket(
+        address market,
+        address addressToCheck
+    ) external view returns (uint upBalance, uint downBalance);
 }

@@ -10,7 +10,7 @@ import "../utils/proxy/solidity-0.8.0/ProxyPausable.sol";
 // Libraries
 import "../utils/libraries/AddressSetLib.sol";
 import "../utils/libraries/DateTime.sol";
-import "@openzeppelin/contracts-4.4.1/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 // Internal references
 import "./PositionalMarketFactory.sol";
@@ -19,7 +19,7 @@ import "./Position.sol";
 import "../interfaces/IPositionalMarket.sol";
 import "../interfaces/IPriceFeed.sol";
 import "../interfaces/IThalesAMM.sol";
-import "@openzeppelin/contracts-4.4.1/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 contract PositionalMarketManager is Initializable, ProxyOwned, ProxyPausable, IPositionalMarketManager {
@@ -209,11 +209,7 @@ contract PositionalMarketManager is Initializable, ProxyOwned, ProxyPausable, IP
     /// @param sender address of sender
     /// @param receiver address of receiver
     /// @param amount amount to be transferred
-    function transferSusdTo(
-        address sender,
-        address receiver,
-        uint amount
-    ) external override {
+    function transferSusdTo(address sender, address receiver, uint amount) external override {
         //only to be called by markets themselves
         require(isKnownMarket(address(msg.sender)), "Market unknown.");
         amount = needsTransformingCollateral ? amount + 1 : amount;
@@ -287,11 +283,7 @@ contract PositionalMarketManager is Initializable, ProxyOwned, ProxyPausable, IP
     /// @param maturity market maturity timestamp
     /// @param strikePrice market strike price
     /// @return bool
-    function canCreateMarket(
-        bytes32 oracleKey,
-        uint maturity,
-        uint strikePrice
-    ) public view returns (bool, string memory) {
+    function canCreateMarket(bytes32 oracleKey, uint maturity, uint strikePrice) public view returns (bool, string memory) {
         if (!marketCreationEnabled) {
             return (false, "Market creation is disabled");
         }
@@ -549,7 +541,7 @@ contract PositionalMarketManager is Initializable, ProxyOwned, ProxyPausable, IP
     /// @param index index value
     /// @param multiplier multiplier value
     function _calculateStrikePriceStepValue(uint index, uint multiplier) internal pure returns (uint value) {
-        value = (2**index - index) * multiplier;
+        value = (2 ** index - index) * multiplier;
     }
 
     /// @notice _calculateStrikePriceStepValue helper function for calculating strike price step
@@ -561,7 +553,7 @@ contract PositionalMarketManager is Initializable, ProxyOwned, ProxyPausable, IP
         uint exponent1,
         uint exponent2
     ) internal pure returns (uint value) {
-        value = strikePriceStep >= ONE ? 10**exponent1 * ONE : ONE / (10**exponent2);
+        value = strikePriceStep >= ONE ? 10 ** exponent1 * ONE : ONE / (10 ** exponent2);
     }
 
     /// @notice _getExponent helper function for calculating exponent of strike price step

@@ -25,11 +25,10 @@ library CallbackValidation {
     /// @param factory The contract address of the Uniswap V3 factory
     /// @param poolKey The identifying key of the V3 pool
     /// @return pool The V3 pool contract address
-    function verifyCallback(address factory, PoolAddress.PoolKey memory poolKey)
-        internal
-        view
-        returns (IUniswapV3Pool pool)
-    {
+    function verifyCallback(
+        address factory,
+        PoolAddress.PoolKey memory poolKey
+    ) internal view returns (IUniswapV3Pool pool) {
         pool = IUniswapV3Pool(PoolAddress.computeAddress(factory, poolKey));
         require(msg.sender == address(pool));
     }

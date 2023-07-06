@@ -33,22 +33,14 @@ contract VestingEscrowCC is Initializable, ProxyReentrancyGuard, ProxyOwned, Pro
     uint public vestingPeriod;
     address[] public recipients;
 
-    function initialize(
-        address _owner,
-        address _token,
-        uint _vestingPeriod
-    ) public initializer {
+    function initialize(address _owner, address _token, uint _vestingPeriod) public initializer {
         setOwner(_owner);
         initNonReentrant();
         token = _token;
         vestingPeriod = _vestingPeriod;
     }
 
-    function fund(
-        address _recipient,
-        uint _amount,
-        uint _startTime
-    ) external onlyOwner {
+    function fund(address _recipient, uint _amount, uint _startTime) external onlyOwner {
         require(_recipient != address(0), "Invalid address");
 
         if (initialLocked[_recipient] == 0) {

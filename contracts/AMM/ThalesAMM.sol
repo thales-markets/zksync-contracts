@@ -133,11 +133,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
     /// @param position UP or DOWN
     /// @param amount number of positions to buy with 18 decimals
     /// @return _quote in sUSD on how much the trader would need to pay to buy the amount of UP or DOWN positions
-    function buyFromAmmQuote(
-        address market,
-        IThalesAMM.Position position,
-        uint amount
-    ) public view returns (uint _quote) {
+    function buyFromAmmQuote(address market, IThalesAMM.Position position, uint amount) public view returns (uint _quote) {
         uint basePrice = price(market, position);
         uint basePriceOtherSide = ONE - basePrice;
         if (basePrice > 0) {
@@ -225,11 +221,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
     /// @param position UP or DOWN
     /// @param amount number of positions to buy with 18 decimals
     /// @return _quote in sUSD on how much the trader would receive as payment to sell the amount of UP or DOWN positions
-    function sellToAmmQuote(
-        address market,
-        IThalesAMM.Position position,
-        uint amount
-    ) public view returns (uint _quote) {
+    function sellToAmmQuote(address market, IThalesAMM.Position position, uint amount) public view returns (uint _quote) {
         uint basePrice = price(market, position);
         basePrice = basePrice > maxSupportedPrice ? maxSupportedPrice : basePrice;
         uint _available = _availableToSellToAMM(market, position, basePrice);
@@ -241,11 +233,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
     /// @param position UP or DOWN
     /// @param amount number of positions to buy with 18 decimals
     /// @return _impact the skew impact applied to that side of the market
-    function sellPriceImpact(
-        address market,
-        IThalesAMM.Position position,
-        uint amount
-    ) public view returns (uint _impact) {
+    function sellPriceImpact(address market, IThalesAMM.Position position, uint amount) public view returns (uint _impact) {
         uint _available = availableToSellToAMM(market, position);
         if (amount <= _available) {
             _impact = _sellPriceImpact(market, position, amount, _available);
@@ -646,12 +634,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
         _handleInTheMoneyEvent(market, position, sUSDPaid, msg.sender);
     }
 
-    function _handleInTheMoneyEvent(
-        address market,
-        IThalesAMM.Position position,
-        uint sUSDPaid,
-        address sender
-    ) internal {
+    function _handleInTheMoneyEvent(address market, IThalesAMM.Position position, uint sUSDPaid, address sender) internal {
         (bytes32 key, uint strikePrice, ) = IPositionalMarket(market).getOracleDetails();
         uint currentAssetPrice = priceFeed.rateForCurrency(key);
         bool inTheMoney = position == IThalesAMM.Position.Up
@@ -693,11 +676,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
         }
     }
 
-    function _updateSpentOnMarketOnBuy(
-        address market,
-        uint sUSDPaid,
-        address buyer
-    ) internal {
+    function _updateSpentOnMarketOnBuy(address market, uint sUSDPaid, address buyer) internal {
         uint safeBoxShare;
         if (safeBoxImpact > 0) {
             safeBoxShare = (sUSDPaid -
@@ -804,11 +783,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
         }
     }
 
-    function _handleReferrer(
-        address buyer,
-        uint referrerShare,
-        uint volume
-    ) internal {
+    function _handleReferrer(address buyer, uint referrerShare, uint volume) internal {
         address referrer = IReferrals(referrals).referrals(buyer);
         if (referrer != address(0) && referrerFee > 0) {
             sUSD.safeTransfer(referrer, referrerShare);
@@ -1060,12 +1035,7 @@ contract ThalesAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
     /// @param account Address where to send the tokens
     /// @param amount Amount of tokens to be sent
     /// @param all ignore amount and send whole balance
-    function transferTokens(
-        address[] calldata tokens,
-        address payable account,
-        uint amount,
-        bool all
-    ) external onlyOwner {
+    function transferTokens(address[] calldata tokens, address payable account, uint amount, bool all) external onlyOwner {
         require(tokens.length > 0, "tokens array cant be empty");
         for (uint256 index = 0; index < tokens.length; index++) {
             if (all) {

@@ -23,11 +23,7 @@ contract ThalesAMMDefaultLiquidityProvider is ProxyOwned, Initializable, ProxyRe
     //        _disableInitializers();
     //    }
 
-    function initialize(
-        address _owner,
-        IERC20Upgradeable _sUSD,
-        address _thalesAMMLiquidityPool
-    ) public initializer {
+    function initialize(address _owner, IERC20Upgradeable _sUSD, address _thalesAMMLiquidityPool) public initializer {
         setOwner(_owner);
         initNonReentrant();
         sUSD = _sUSD;

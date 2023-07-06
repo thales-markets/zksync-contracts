@@ -61,7 +61,7 @@ interface IUniswapPool {
             uint8 feeProtocol,
             bool unlocked
         );
-    
+
     /// @notice Returns the cumulative tick and liquidity as of each timestamp `secondsAgo` from the current block timestamp
     /// @dev To get a time weighted average tick or liquidity-in-range, you must call this with two values, one representing
     /// the beginning of the period and another for the end of the period. E.g., to get the last hour time-weighted average tick,
@@ -72,11 +72,9 @@ interface IUniswapPool {
     /// @return tickCumulatives Cumulative tick values as of each `secondsAgos` from the current block timestamp
     /// @return secondsPerLiquidityCumulativeX128s Cumulative seconds per liquidity-in-range value as of each `secondsAgos` from the current block
     /// timestamp
-    function observe(uint32[] calldata secondsAgos)
-        external
-        view
-        returns (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s);
-
+    function observe(
+        uint32[] calldata secondsAgos
+    ) external view returns (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s);
 
     /// @notice Sets the initial price for the pool
     /// @dev Price is represented as a sqrt(amountToken1/amountToken0) Q64.96 value
@@ -88,7 +86,4 @@ interface IUniswapPool {
     /// @param sqrtPriceX96 The initial sqrt price of the pool, as a Q64.96
     /// @param tick The initial tick of the pool, i.e. log base 1.0001 of the starting price of the pool
     event Initialize(uint160 sqrtPriceX96, int24 tick);
-
-
-
 }

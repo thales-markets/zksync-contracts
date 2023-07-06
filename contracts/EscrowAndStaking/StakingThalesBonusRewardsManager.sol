@@ -58,12 +58,7 @@ contract StakingThalesBonusRewardsManager is ProxyOwned, Initializable, ProxyRee
     /// @param origin where the points originated from (vaults, lp or trading)
     /// @param basePoints how many points were scored
     /// @param round in which round to store the points
-    function storePoints(
-        address user,
-        address origin,
-        uint basePoints,
-        uint round
-    ) external {
+    function storePoints(address user, address origin, uint basePoints, uint round) external {
         require(msg.sender == stakingThales, "Only allowed from StakingThales");
         require(
             knownVaults[origin] || knownLiquidityPools[origin] || knownTradingAMMs[origin],
@@ -129,11 +124,7 @@ contract StakingThalesBonusRewardsManager is ProxyOwned, Initializable, ProxyRee
     }
 
     /// @notice set multiplers for each category
-    function setMultipliers(
-        uint _vaultsMultiplier,
-        uint _lpMultiplier,
-        uint _tradingMultiplier
-    ) external onlyOwner {
+    function setMultipliers(uint _vaultsMultiplier, uint _lpMultiplier, uint _tradingMultiplier) external onlyOwner {
         vaultsMultiplier = _vaultsMultiplier;
         lpMultiplier = _lpMultiplier;
         tradingMultiplier = _tradingMultiplier;
@@ -162,11 +153,10 @@ contract StakingThalesBonusRewardsManager is ProxyOwned, Initializable, ProxyRee
     }
 
     /// @notice return leaderboard data
-    function getStakersLeaderboardData(address[] calldata stakers, uint round)
-        external
-        view
-        returns (LeaderboardStakerData[] memory)
-    {
+    function getStakersLeaderboardData(
+        address[] calldata stakers,
+        uint round
+    ) external view returns (LeaderboardStakerData[] memory) {
         LeaderboardStakerData[] memory stakersArray = new LeaderboardStakerData[](stakers.length);
 
         for (uint i = 0; i < stakers.length; i++) {

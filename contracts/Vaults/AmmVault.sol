@@ -259,11 +259,7 @@ contract AmmVault is Initializable, ProxyOwned, PausableUpgradeable, ProxyReentr
     /// @param market address of a market
     /// @param amount number of options to be bought
     /// @param position to buy options for
-    function trade(
-        address market,
-        uint amount,
-        IThalesAMM.Position position
-    ) external nonReentrant whenNotPaused {
+    function trade(address market, uint amount, IThalesAMM.Position position) external nonReentrant whenNotPaused {
         require(vaultStarted, "Vault has not started");
         require(amount >= minTradeAmount, "Amount less than minimum");
 
@@ -387,11 +383,7 @@ contract AmmVault is Initializable, ProxyOwned, PausableUpgradeable, ProxyReentr
     /// @param market address of a market
     /// @param position position to be bought
     /// @param amount amount of positions to be bought
-    function _buyFromAmm(
-        address market,
-        IThalesAMM.Position position,
-        uint amount
-    ) internal {
+    function _buyFromAmm(address market, IThalesAMM.Position position, uint amount) internal {
         uint quote = thalesAMM.buyFromAmmQuote(market, position, amount);
         require(quote < (tradingAllocation() - allocationSpentInARound[round]), "Amount exceeds available allocation");
 

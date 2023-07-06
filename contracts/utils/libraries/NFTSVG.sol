@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-4.4.1/utils/Strings.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "base64-sol/base64.sol";
 import "../../interfaces/IPassportPosition.sol";
 
@@ -60,11 +60,11 @@ library NFTSVG {
                 generateSVGBase(),
                 '<text x="120" y="115" font-family="Helvetica" font-size="24" fill="#7F6F6F">SEASON ',
                 Strings.toString(season),
-                '</text>',
+                "</text>",
                 '<text x="60" y="240" font-family="Courier New" font-size="38" fill="#D10019" text-decoration="line-through">ELIMINATED</text>',
                 '<text x="50" y="520" font-family="Courier New" font-size="20" fill="#7F6F6F">Passport No: #',
                 Strings.toString(tokenId),
-                '</text>',
+                "</text>",
                 generateSVGBackground()
             )
         );
@@ -80,29 +80,29 @@ library NFTSVG {
         svg = string(
             abi.encodePacked(
                 '<text x="',
-                seasonFinished ? '63' : '120',
+                seasonFinished ? "63" : "120",
                 '" y="115" font-family="Helvetica" font-size="24" fill="#7F6F6F">',
-                seasonFinished ? 'WINNER SEASON ' : 'SEASON ',
+                seasonFinished ? "WINNER SEASON " : "SEASON ",
                 Strings.toString(season),
-                '</text>',
+                "</text>",
                 '<text x="10" y="460" font-family="Courier New" font-size="13" fill="#7F6F6F">',
-                addressToString(player), 
-                '</text>',
+                addressToString(player),
+                "</text>",
                 '<text x="30" y="490" font-family="Courier New" font-size="20" fill="#7F6F6F">Issued On: ',
                 Strings.toString(timestamp),
-                '</text>',
+                "</text>",
                 '<text x="50" y="520" font-family="Courier New" font-size="20" fill="#7F6F6F">Passport No: #',
                 Strings.toString(tokenId),
-                '</text>'
+                "</text>"
             )
         );
     }
 
-    function generateSVGStamps(IPassportPosition.Position[] memory positions, uint currentRound, bool seasonFinished)
-        private
-        pure
-        returns (string memory stamps)
-    {
+    function generateSVGStamps(
+        IPassportPosition.Position[] memory positions,
+        uint currentRound,
+        bool seasonFinished
+    ) private pure returns (string memory stamps) {
         stamps = string(abi.encodePacked(""));
         uint rounds = seasonFinished ? currentRound - 1 : currentRound;
         for (uint i = 0; i < positions.length; i++) {
@@ -115,10 +115,7 @@ library NFTSVG {
         }
     }
 
-    function generateSVGStamp(
-        uint round,
-        uint position
-    ) private pure returns (string memory stamp) {
+    function generateSVGStamp(uint round, uint position) private pure returns (string memory stamp) {
         string memory item = "";
         if (round == 1) {
             item = position == 1
@@ -165,7 +162,7 @@ library NFTSVG {
     function addressToString(address _addr) internal pure returns (string memory) {
         bytes memory s = new bytes(40);
         for (uint i = 0; i < 20; i++) {
-            bytes1 b = bytes1(uint8(uint256(uint160(_addr)) / (2**(8 * (19 - i)))));
+            bytes1 b = bytes1(uint8(uint256(uint160(_addr)) / (2 ** (8 * (19 - i)))));
             bytes1 hi = bytes1(uint8(b) / 16);
             bytes1 lo = bytes1(uint8(b) - 16 * uint8(hi));
             s[2 * i] = _char(hi);

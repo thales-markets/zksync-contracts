@@ -8,7 +8,7 @@ import "../utils/libraries/UniswapMath.sol";
 
 // Libraries
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-4.4.1/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 // Internal references
 // AggregatorInterface from Chainlink represents a decentralized pricing network for a single currency key
@@ -167,7 +167,7 @@ contract PriceFeed is Initializable, ProxyOwned {
     function _formatAnswer(bytes32 currencyKey, int256 rate) internal view returns (uint) {
         require(rate >= 0, "Negative rate not supported");
         if (currencyKeyDecimals[currencyKey] > 0) {
-            uint multiplier = 10**uint(SafeMath.sub(18, currencyKeyDecimals[currencyKey]));
+            uint multiplier = 10 ** uint(SafeMath.sub(18, currencyKeyDecimals[currencyKey]));
             return uint(uint(rate).mul(multiplier));
         }
         return uint(rate);
@@ -183,11 +183,11 @@ contract PriceFeed is Initializable, ProxyOwned {
         } else {
             require(address(aggregators["ETH"]) != address(0), "Price for ETH does not exist");
             uint256 ratio = _getPriceFromSqrtPrice(_getTwap(address(pool), currencyKey));
-            uint256 ethPrice = _getAggregatorRate(address(aggregators["ETH"]), "ETH").rate * 10**18; 
+            uint256 ethPrice = _getAggregatorRate(address(aggregators["ETH"]), "ETH").rate * 10 ** 18;
             address token0 = pool.token0();
             uint answer;
 
-            if(token0 == _ETH || token0 == _wETH) {
+            if (token0 == _ETH || token0 == _wETH) {
                 answer = ethPrice / ratio;
             } else {
                 answer = ethPrice * ratio;
@@ -200,7 +200,7 @@ contract PriceFeed is Initializable, ProxyOwned {
         }
     }
 
-    function _getAggregatorRate(address aggregator, bytes32 currencyKey) internal view returns (RateAndUpdatedTime memory ) {
+    function _getAggregatorRate(address aggregator, bytes32 currencyKey) internal view returns (RateAndUpdatedTime memory) {
         // this view from the aggregator is the most gas efficient but it can throw when there's no data,
         // so let's call it low-level to suppress any reverts
         bytes memory payload = abi.encodeWithSignature("latestRoundData()");
@@ -208,10 +208,7 @@ contract PriceFeed is Initializable, ProxyOwned {
         (bool success, bytes memory returnData) = aggregator.staticcall(payload);
 
         if (success) {
-            (, int256 answer, , uint256 updatedAt, ) = abi.decode(
-                returnData,
-                (uint80, int256, uint256, uint256, uint80)
-            );
+            (, int256 answer, , uint256 updatedAt, ) = abi.decode(returnData, (uint80, int256, uint256, uint256, uint80));
             return RateAndUpdatedTime({rate: uint216(_formatAnswer(currencyKey, answer)), time: uint40(updatedAt)});
         }
 
@@ -236,7 +233,7 @@ contract PriceFeed is Initializable, ProxyOwned {
 
     function _getPriceFromSqrtPrice(uint160 sqrtPriceX96) internal pure returns (uint256 priceX96) {
         uint256 price = UniswapMath.mulDiv(sqrtPriceX96, sqrtPriceX96, UniswapMath.Q96);
-        return UniswapMath.mulDiv(price, 10**18, UniswapMath.Q96);
+        return UniswapMath.mulDiv(price, 10 ** 18, UniswapMath.Q96);
     }
 
     function transferCurrencyKeys() external onlyOwner {

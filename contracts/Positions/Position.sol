@@ -3,11 +3,11 @@
 pragma solidity ^0.8.0;
 
 // Inheritance
-import "@openzeppelin/contracts-4.4.1/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../interfaces/IPosition.sol";
 
 // Libraries
-import "@openzeppelin/contracts-4.4.1/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 // Internal references
 import "./PositionalMarket.sol";
@@ -34,11 +34,7 @@ contract Position is IERC20, IPosition {
 
     bool public initialized = false;
 
-    function initialize(
-        string calldata _name,
-        string calldata _symbol,
-        address _thalesAMM
-    ) external {
+    function initialize(string calldata _name, string calldata _symbol, address _thalesAMM) external {
         require(!initialized, "Positional Market already initialized");
         initialized = true;
         name = _name;
@@ -125,11 +121,7 @@ contract Position is IERC20, IPosition {
     /// @param _to address of the receiver
     /// @param _value value to be transferred
     /// @return success
-    function transferFrom(
-        address _from,
-        address _to,
-        uint _value
-    ) external override returns (bool success) {
+    function transferFrom(address _from, address _to, uint _value) external override returns (bool success) {
         if (msg.sender != thalesAMM) {
             uint fromAllowance = allowances[_from][msg.sender];
             require(_value <= fromAllowance, "Insufficient allowance");
@@ -167,11 +159,7 @@ contract Position is IERC20, IPosition {
     /// @param _to address of the receiver
     /// @param _value value to be transferred
     /// @return success
-    function _transfer(
-        address _from,
-        address _to,
-        uint _value
-    ) internal returns (bool success) {
+    function _transfer(address _from, address _to, uint _value) internal returns (bool success) {
         market.requireUnpaused();
         require(_to != address(0) && _to != address(this), "Invalid address");
 

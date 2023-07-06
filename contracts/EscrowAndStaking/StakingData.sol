@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.5.16;
+pragma solidity ^0.8.0;
 pragma experimental ABIEncoderV2;
 
 // Inheritance
@@ -7,7 +7,7 @@ import "./StakingThales.sol";
 import "./EscrowThales.sol";
 import "../utils/proxy/ProxyOwned.sol";
 import "../utils/proxy/ProxyPausable.sol";
-import "@openzeppelin/upgrades-core/contracts/Initializable.sol";
+import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 
 contract StakingData is Initializable, ProxyOwned, ProxyPausable {
     struct StakingData {

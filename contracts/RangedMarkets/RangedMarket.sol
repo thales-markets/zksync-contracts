@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-4.4.1/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts-4.4.1/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 // Internal references
 import "./RangedPosition.sol";
@@ -13,7 +13,10 @@ import "../interfaces/IPositionalMarketManager.sol";
 contract RangedMarket {
     using SafeERC20 for IERC20;
 
-    enum Position {In, Out}
+    enum Position {
+        In,
+        Out
+    }
 
     IPositionalMarket public leftMarket;
     IPositionalMarket public rightMarket;
@@ -51,22 +54,14 @@ contract RangedMarket {
         rangedMarketsAMM = RangedMarketsAMM(_rangedMarketsAMM);
     }
 
-    function mint(
-        uint value,
-        Position _position,
-        address minter
-    ) external onlyAMM {
+    function mint(uint value, Position _position, address minter) external onlyAMM {
         if (value == 0) {
             return;
         }
         _mint(minter, value, _position);
     }
 
-    function _mint(
-        address minter,
-        uint amount,
-        Position _position
-    ) internal {
+    function _mint(address minter, uint amount, Position _position) internal {
         if (_position == Position.In) {
             positions.inp.mint(minter, amount);
         } else {
@@ -213,7 +208,7 @@ contract RangedMarket {
         rangedMarketsAMM.sUSD().transfer(recipient, rangedMarketsAMM.sUSD().balanceOf(address(this)));
     }
 
-    modifier onlyAMM {
+    modifier onlyAMM() {
         require(msg.sender == address(rangedMarketsAMM), "only the AMM may perform these methods");
         _;
     }

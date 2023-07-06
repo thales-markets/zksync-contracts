@@ -16,11 +16,7 @@ library AddressSetLib {
         return index != 0 || set.elements[0] == candidate;
     }
 
-    function getPage(
-        AddressSet storage set,
-        uint index,
-        uint pageSize
-    ) internal view returns (address[] memory) {
+    function getPage(AddressSet storage set, uint index, uint pageSize) internal view returns (address[] memory) {
         // NOTE: This implementation should be converted to slice operators if the compiler is updated to v0.6.0+
         uint endIndex = index + pageSize; // The check below that endIndex <= index handles overflow.
 

@@ -187,11 +187,10 @@ contract ThalesAMMUtils {
             : up.getBalanceOf(addressToCheck);
     }
 
-    function getBalanceOfPositionsOnMarket(address market, address addressToCheck)
-        public
-        view
-        returns (uint upBalance, uint downBalance)
-    {
+    function getBalanceOfPositionsOnMarket(
+        address market,
+        address addressToCheck
+    ) public view returns (uint upBalance, uint downBalance) {
         (IPosition up, IPosition down) = IPositionalMarket(market).getOptions();
         upBalance = up.getBalanceOf(addressToCheck);
         downBalance = down.getBalanceOf(addressToCheck);

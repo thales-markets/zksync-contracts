@@ -4,7 +4,7 @@
 pragma solidity ^0.8.0;
 
 // Inheritance
-import "@openzeppelin/contracts-4.4.1/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../interfaces/IPosition.sol";
 
 // Internal references
@@ -33,12 +33,7 @@ contract RangedPosition is IERC20 {
 
     bool public initialized = false;
 
-    function initialize(
-        address market,
-        string calldata _name,
-        string calldata _symbol,
-        address _thalesRangedAMM
-    ) external {
+    function initialize(address market, string calldata _name, string calldata _symbol, address _thalesRangedAMM) external {
         require(!initialized, "Ranged Market already initialized");
         initialized = true;
         rangedMarket = RangedMarket(market);
@@ -72,11 +67,7 @@ contract RangedPosition is IERC20 {
 
     /* ---------- ERC20 Functions ---------- */
 
-    function _transfer(
-        address _from,
-        address _to,
-        uint _value
-    ) internal returns (bool success) {
+    function _transfer(address _from, address _to, uint _value) internal returns (bool success) {
         require(_to != address(0) && _to != address(this), "Invalid address");
 
         uint fromBalance = balanceOf[_from];
@@ -93,11 +84,7 @@ contract RangedPosition is IERC20 {
         return _transfer(msg.sender, _to, _value);
     }
 
-    function transferFrom(
-        address _from,
-        address _to,
-        uint _value
-    ) external override returns (bool success) {
+    function transferFrom(address _from, address _to, uint _value) external override returns (bool success) {
         if (msg.sender != thalesRangedAMM) {
             uint fromAllowance = allowances[_from][msg.sender];
             require(_value <= fromAllowance, "Insufficient allowance");
@@ -121,7 +108,7 @@ contract RangedPosition is IERC20 {
         return totalSupply;
     }
 
-    modifier onlyRangedMarket {
+    modifier onlyRangedMarket() {
         require(msg.sender == address(rangedMarket), "only the Ranged Market may perform these methods");
         _;
     }

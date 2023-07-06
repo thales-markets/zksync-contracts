@@ -56,11 +56,7 @@ contract ThalesAMMLiquidityPoolRound {
         }
     }
 
-    function moveOptions(
-        IERC20Upgradeable option,
-        uint optionsAmount,
-        address destination
-    ) external onlyLiquidityPool {
+    function moveOptions(IERC20Upgradeable option, uint optionsAmount, address destination) external onlyLiquidityPool {
         option.safeTransfer(destination, optionsAmount);
     }
 

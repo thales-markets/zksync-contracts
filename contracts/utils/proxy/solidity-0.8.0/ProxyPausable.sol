@@ -11,8 +11,6 @@ contract ProxyPausable is ProxyOwned {
     uint public lastPauseTime;
     bool public paused;
 
-    
-
     /**
      * @notice Change the paused state of the contract
      * @dev Only the contract owner may call this.
@@ -37,7 +35,7 @@ contract ProxyPausable is ProxyOwned {
 
     event PauseChanged(bool isPaused);
 
-    modifier notPaused {
+    modifier notPaused() {
         require(!paused, "This action cannot be performed while the contract is paused");
         _;
     }

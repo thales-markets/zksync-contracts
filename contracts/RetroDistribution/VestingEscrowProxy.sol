@@ -24,12 +24,7 @@ contract VestingEscrowProxy is Initializable, ProxyReentrancyGuard, ProxyOwned, 
 
     uint256 public initialLockedSupply;
 
-    function initialize(
-        address _owner,
-        address _token,
-        uint256 _startTime,
-        uint256 _endTime
-    ) public initializer {
+    function initialize(address _owner, address _token, uint256 _startTime, uint256 _endTime) public initializer {
         setOwner(_owner);
         initNonReentrant();
         require(_startTime >= block.timestamp, "Start time must be in future");

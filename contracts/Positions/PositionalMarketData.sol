@@ -182,11 +182,10 @@ contract PositionalMarketData is Initializable, ProxyOwned, ProxyPausable {
     /// @param start startIndex
     /// @param end endIndex
     /// @return ActiveMarketsPriceImpact
-    function getBatchPriceImpactForAllActiveMarkets(uint start, uint end)
-        external
-        view
-        returns (ActiveMarketsPriceImpact[] memory)
-    {
+    function getBatchPriceImpactForAllActiveMarkets(
+        uint start,
+        uint end
+    ) external view returns (ActiveMarketsPriceImpact[] memory) {
         address[] memory activeMarkets = PositionalMarketManager(manager).activeMarkets(
             0,
             PositionalMarketManager(manager).numActiveMarkets()
@@ -218,11 +217,10 @@ contract PositionalMarketData is Initializable, ProxyOwned, ProxyPausable {
     /// @param start startIndex
     /// @param end endIndex
     /// @return ActiveMarketsPrices
-    function getBatchBasePricesForAllActiveMarkets(uint start, uint end)
-        external
-        view
-        returns (ActiveMarketsPrices[] memory)
-    {
+    function getBatchBasePricesForAllActiveMarkets(
+        uint start,
+        uint end
+    ) external view returns (ActiveMarketsPrices[] memory) {
         address[] memory activeMarkets = PositionalMarketManager(manager).activeMarkets(
             0,
             PositionalMarketManager(manager).numActiveMarkets()
@@ -305,11 +303,10 @@ contract PositionalMarketData is Initializable, ProxyOwned, ProxyPausable {
     /// @param markets to get info for
     /// @param position asset to get info for
     /// @return market info for a list of markets and position
-    function getActiveMarketsInfoPerPosition(address[] calldata markets, IThalesAMM.Position position)
-        external
-        view
-        returns (ActiveMarketsInfoPerPosition[] memory)
-    {
+    function getActiveMarketsInfoPerPosition(
+        address[] calldata markets,
+        IThalesAMM.Position position
+    ) external view returns (ActiveMarketsInfoPerPosition[] memory) {
         ActiveMarketsInfoPerPosition[] memory activeMarkets = new ActiveMarketsInfoPerPosition[](markets.length);
         for (uint i = 0; i < markets.length; i++) {
             activeMarkets[i].market = markets[i];
@@ -329,11 +326,10 @@ contract PositionalMarketData is Initializable, ProxyOwned, ProxyPausable {
     /// @param markets to get info for
     /// @param position asset to get info for
     /// @return all available dates per asset
-    function getRangedActiveMarketsInfoPerPosition(address[] calldata markets, RangedMarket.Position position)
-        external
-        view
-        returns (RangedMarketsInfoPerPosition[] memory)
-    {
+    function getRangedActiveMarketsInfoPerPosition(
+        address[] calldata markets,
+        RangedMarket.Position position
+    ) external view returns (RangedMarketsInfoPerPosition[] memory) {
         RangedMarketsInfoPerPosition[] memory activeMarkets = new RangedMarketsInfoPerPosition[](markets.length);
         RangedMarketsAMM rangedAMMContract = RangedMarketsAMM(rangedMarketsAMM);
 

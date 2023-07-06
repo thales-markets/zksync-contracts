@@ -15,11 +15,7 @@ interface IThalesAMM {
 
     function impliedVolatilityPerAsset(bytes32 oracleKey) external view returns (uint);
 
-    function buyFromAmmQuote(
-        address market,
-        Position position,
-        uint amount
-    ) external view returns (uint);
+    function buyFromAmmQuote(address market, Position position, uint amount) external view returns (uint);
 
     function buyFromAMM(
         address market,
@@ -31,11 +27,7 @@ interface IThalesAMM {
 
     function availableToSellToAMM(address market, Position position) external view returns (uint);
 
-    function sellToAmmQuote(
-        address market,
-        Position position,
-        uint amount
-    ) external view returns (uint);
+    function sellToAmmQuote(address market, Position position, uint amount) external view returns (uint);
 
     function sellToAMM(
         address market,
@@ -49,17 +41,9 @@ interface IThalesAMM {
 
     function price(address market, Position position) external view returns (uint);
 
-    function buyPriceImpact(
-        address market,
-        Position position,
-        uint amount
-    ) external view returns (int);
+    function buyPriceImpact(address market, Position position, uint amount) external view returns (int);
 
-    function sellPriceImpact(
-        address market,
-        Position position,
-        uint amount
-    ) external view returns (int);
+    function sellPriceImpact(address market, Position position, uint amount) external view returns (int);
 
     function priceFeed() external view returns (IPriceFeed);
 }

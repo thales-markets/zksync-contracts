@@ -11,8 +11,8 @@ import "./PositionalMarket.sol";
 import "./PositionalMarketFactory.sol";
 import "../interfaces/IPriceFeed.sol";
 import "../interfaces/IPositionalMarket.sol";
-import "@openzeppelin/contracts-4.4.1/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts-4.4.1/proxy/Clones.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/proxy/Clones.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 contract PositionalMarketFactory is Initializable, ProxyOwned {

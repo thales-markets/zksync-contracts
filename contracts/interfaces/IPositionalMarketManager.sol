@@ -48,9 +48,5 @@ interface IPositionalMarketManager {
 
     function expireMarkets(address[] calldata market) external;
 
-    function transferSusdTo(
-        address sender,
-        address receiver,
-        uint amount
-    ) external;
+    function transferSusdTo(address sender, address receiver, uint amount) external;
 }

@@ -8,12 +8,12 @@ import "../interfaces/IPositionalMarket.sol";
 import "../interfaces/IOracleInstance.sol";
 
 // Libraries
-import "@openzeppelin/contracts-4.4.1/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 // Internal references
 import "./PositionalMarketManager.sol";
 import "./Position.sol";
-import "@openzeppelin/contracts-4.4.1/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract PositionalMarket is OwnedWithInit, IPositionalMarket {
     /* ========== LIBRARIES ========== */
@@ -171,16 +171,7 @@ contract PositionalMarket is OwnedWithInit, IPositionalMarket {
 
     /// @notice getOracleDetails returns data from oracle source
     /// @return key strikePrice finalPrice
-    function getOracleDetails()
-        external
-        view
-        override
-        returns (
-            bytes32 key,
-            uint strikePrice,
-            uint finalPrice
-        )
-    {
+    function getOracleDetails() external view override returns (bytes32 key, uint strikePrice, uint finalPrice) {
         key = oracleDetails.key;
         strikePrice = oracleDetails.strikePrice;
         finalPrice = oracleDetails.finalPrice;

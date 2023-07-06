@@ -9,7 +9,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/math/SafeMathUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
-import "@openzeppelin/contracts-4.4.1/proxy/Clones.sol";
+import "@openzeppelin/contracts/proxy/Clones.sol";
 
 // internal
 import "../utils/proxy/solidity-0.8.0/ProxyReentrancyGuard.sol";
@@ -30,11 +30,7 @@ contract Referrals is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyG
     address public sportsAMM;
     address public parlayAMM;
 
-    function initialize(
-        address _owner,
-        address thalesAmm,
-        address rangedAMM
-    ) public initializer {
+    function initialize(address _owner, address thalesAmm, address rangedAMM) public initializer {
         setOwner(_owner);
         initNonReentrant();
         whitelistedAddresses[thalesAmm] = true;

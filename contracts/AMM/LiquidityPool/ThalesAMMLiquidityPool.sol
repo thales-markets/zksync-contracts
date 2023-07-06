@@ -8,7 +8,7 @@ import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
 import "../../utils/proxy/solidity-0.8.0/ProxyReentrancyGuard.sol";
 import "../../utils/proxy/solidity-0.8.0/ProxyOwned.sol";
-import "@openzeppelin/contracts-4.4.1/proxy/Clones.sol";
+import "@openzeppelin/contracts/proxy/Clones.sol";
 
 import "../../interfaces/IThalesAMM.sol";
 import "../../interfaces/IPositionalMarket.sol";
@@ -171,13 +171,10 @@ contract ThalesAMMLiquidityPool is Initializable, ProxyOwned, PausableUpgradeabl
     /// @notice get sUSD to mint for buy and store market as trading in the round
     /// @param market to trade
     /// @param amountToMint amount to get for mint
-    function commitTrade(address market, uint amountToMint)
-        external
-        nonReentrant
-        whenNotPaused
-        onlyAMM
-        roundClosingNotPrepared
-    {
+    function commitTrade(
+        address market,
+        uint amountToMint
+    ) external nonReentrant whenNotPaused onlyAMM roundClosingNotPrepared {
         require(started, "Pool has not started");
         require(amountToMint > 0, "Can't commit a zero trade");
 
@@ -259,14 +256,9 @@ contract ThalesAMMLiquidityPool is Initializable, ProxyOwned, PausableUpgradeabl
     /// @notice Create a round pool by market maturity date if it doesnt already exist
     /// @param market to use
     /// @return roundPool the pool for the passed market
-    function getOrCreateMarketPool(address market)
-        external
-        onlyAMM
-        nonReentrant
-        whenNotPaused
-        roundClosingNotPrepared
-        returns (address roundPool)
-    {
+    function getOrCreateMarketPool(
+        address market
+    ) external onlyAMM nonReentrant whenNotPaused roundClosingNotPrepared returns (address roundPool) {
         uint marketRound = getMarketRound(market);
         roundPool = _getOrCreateRoundPool(marketRound);
     }
@@ -429,12 +421,9 @@ contract ThalesAMMLiquidityPool is Initializable, ProxyOwned, PausableUpgradeabl
 
     /// @notice Exercises markets in a round
     /// @param batchSize number of markets to be processed
-    function exerciseMarketsReadyToExercisedBatch(uint batchSize)
-        external
-        nonReentrant
-        whenNotPaused
-        roundClosingNotPrepared
-    {
+    function exerciseMarketsReadyToExercisedBatch(
+        uint batchSize
+    ) external nonReentrant whenNotPaused roundClosingNotPrepared {
         require(batchSize > 0, "batchSize has to be greater than 0");
 
         ThalesAMMLiquidityPoolRound poolRound = ThalesAMMLiquidityPoolRound(roundPools[round]);
@@ -470,15 +459,9 @@ contract ThalesAMMLiquidityPool is Initializable, ProxyOwned, PausableUpgradeabl
     /// @return maxDepositForUser the maximum amount the user can deposit in total including already deposited
     /// @return availableToDepositForUser the maximum amount the user can deposit now
     /// @return stakedThalesForUser how much THALES the user has staked
-    function getMaxAvailableDepositForUser(address user)
-        external
-        view
-        returns (
-            uint maxDepositForUser,
-            uint availableToDepositForUser,
-            uint stakedThalesForUser
-        )
-    {
+    function getMaxAvailableDepositForUser(
+        address user
+    ) external view returns (uint maxDepositForUser, uint availableToDepositForUser, uint stakedThalesForUser) {
         uint nextRound = round + 1;
         stakedThalesForUser = stakingThales.stakedBalanceOf(user);
         maxDepositForUser = _transformCollateral((stakedThalesForUser * stakedThalesMultiplier) / ONE);
@@ -601,11 +584,7 @@ contract ThalesAMMLiquidityPool is Initializable, ProxyOwned, PausableUpgradeabl
         }
     }
 
-    function _depositAsDefault(
-        uint amount,
-        address roundPool,
-        uint _round
-    ) internal {
+    function _depositAsDefault(uint amount, address roundPool, uint _round) internal {
         require(defaultLiquidityProvider != address(0), "default liquidity provider not set");
 
         sUSD.safeTransferFrom(defaultLiquidityProvider, roundPool, amount);

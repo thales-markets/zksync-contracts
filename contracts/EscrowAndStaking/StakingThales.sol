@@ -872,11 +872,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
         _lastRewardsClaimedPeriod[account] = periodsOfStaking;
     }
 
-    function _stake(
-        uint amount,
-        address staker,
-        address sender
-    ) internal {
+    function _stake(uint amount, address staker, address sender) internal {
         require(startTimeStamp > 0, "Staking period has not started");
         require(amount > 0, "Cannot stake 0");
         require(!unstaking[staker], "The staker is paused from staking due to unstaking");
