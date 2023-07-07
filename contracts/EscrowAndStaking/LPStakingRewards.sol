@@ -129,7 +129,7 @@ contract LPStakingRewards is Initializable, ProxyOwned, ProxyReentrancyGuard, Pr
         require(rewardRate <= balance.div(rewardsDuration), "Provided reward too high");
 
         lastUpdateTime = block.timestamp;
-        periodFinish = block.timestamp.add(rewardsDuration);
+        periodFinish = block.timestamp + rewardsDuration;
         emit RewardAdded(reward);
     }
 

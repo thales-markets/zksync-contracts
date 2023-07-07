@@ -165,7 +165,7 @@ contract LPStakingDoubleRewards is Initializable, ProxyOwned, ProxyReentrancyGua
         require(secondRewardRate <= balanceSecondReward.div(rewardsDuration), "Provided reward too high");
 
         lastUpdateTime = block.timestamp;
-        periodFinish = block.timestamp.add(rewardsDuration);
+        periodFinish = block.timestamp + rewardsDuration;
         emit BothRewardsAdded(reward, secondReward);
     }
 

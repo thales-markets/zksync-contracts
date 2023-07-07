@@ -264,7 +264,8 @@ contract PositionalMarket is OwnedWithInit, IPositionalMarket {
     function expire(address payable beneficiary) external onlyOwner {
         require(_expired(), "Unexpired options remaining");
         emit Expired(beneficiary);
-        _selfDestruct(beneficiary);
+        (bool sent, bytes memory data) = beneficiary.call{value: address(this).balance}("");         
+        require(sent, "Failed");
     }
 
     /// @notice _priceFeed internal function returns PriceFeed contract address
@@ -403,7 +404,8 @@ contract PositionalMarket is OwnedWithInit, IPositionalMarket {
         // Destroy the option tokens before destroying the market itself.
         options.up.expire(beneficiary);
         options.down.expire(beneficiary);
-        selfdestruct(beneficiary);
+        (bool sent, bytes memory data) = beneficiary.call{value: address(this).balance}("");         
+        require(sent, "Failed");
     }
 
     modifier duringMinting() {

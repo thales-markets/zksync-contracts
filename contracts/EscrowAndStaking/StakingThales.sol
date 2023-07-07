@@ -22,6 +22,10 @@ import "../interfaces/IThalesAMM.sol";
 import "../interfaces/IPositionalMarketManager.sol";
 import "../interfaces/IStakingThalesBonusRewardsManager.sol";
 
+import "../interfaces/IParlayAMMLiquidityPool.sol";
+
+import "../interfaces/ISportsAMMLiquidityPool.sol";
+
 /// @title A Staking contract that provides logic for staking and claiming rewards
 contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentrancyGuard, ProxyPausable {
     /* ========== LIBRARIES ========== */
@@ -369,7 +373,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
 
     /// @notice Get the base reward amount available for the claim for the account
     /// @param account to get the base reward amount available for the claim for
-    /// @return the base reward amount available for the claim for the account
+    /// @return _baseRewards the base reward amount available for the claim for the account
     function getBaseReward(address account) public view returns (uint _baseRewards) {
         if (
             !((_lastStakingPeriod[account] == periodsOfStaking) ||
@@ -393,7 +397,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
 
     /// @notice Get the AMM volume for the account
     /// @param account to get the AMM volume for
-    /// @return the AMM volume for the account
+    /// @return volumeforAccount the AMM volume for the account
     function getThalesAMMVolume(address account) external view returns (uint volumeforAccount) {
         for (uint i = 0; i < AMM_EXTRA_REWARD_PERIODS; i++) {
             if (periodsOfStaking < thalesAMMVolume[account][i].period.add(AMM_EXTRA_REWARD_PERIODS))
@@ -403,7 +407,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
 
     /// @notice Get the ranged AMM volume for the account
     /// @param account to get the ranged AMM volume for
-    /// @return the ranged AMM volume for the account
+    /// @return volumeforAccount the ranged AMM volume for the account
     function getThalesRangedAMMVolume(address account) external view returns (uint volumeforAccount) {
         for (uint i = 0; i < AMM_EXTRA_REWARD_PERIODS; i++) {
             if (periodsOfStaking < thalesRangedAMMVolume[account][i].period.add(AMM_EXTRA_REWARD_PERIODS))
@@ -413,7 +417,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
 
     /// @notice Get the exotic markets volume for the account
     /// @param account to get exotic markets volume for
-    /// @return the exotic markets volume for the account
+    /// @return volumeforAccount the exotic markets volume for the account
     function getExoticMarketsVolume(address account) external view returns (uint volumeforAccount) {
         for (uint i = 0; i < AMM_EXTRA_REWARD_PERIODS; i++) {
             if (periodsOfStaking < exoticMarketsVolume[account][i].period.add(AMM_EXTRA_REWARD_PERIODS))
@@ -423,7 +427,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
 
     /// @notice Get the sport markets AMM volume for the account
     /// @param account to get the sport markets AMM volume for
-    /// @return the sport markets AMM volume for the account
+    /// @return volumeforAccount the sport markets AMM volume for the account
     function getSportsAMMVolume(address account) external view returns (uint volumeforAccount) {
         for (uint i = 0; i < AMM_EXTRA_REWARD_PERIODS; i++) {
             if (periodsOfStaking < sportsAMMVolume[account][i].period.add(AMM_EXTRA_REWARD_PERIODS))
@@ -662,7 +666,7 @@ contract StakingThales is IStakingThales, Initializable, ProxyOwned, ProxyReentr
     function unstake() external notPaused {
         require(unstaking[msg.sender], "Account has not triggered unstake cooldown");
         require(
-            lastUnstakeTime[msg.sender] < block.timestamp.sub(unstakeDurationPeriod),
+            lastUnstakeTime[msg.sender] < (block.timestamp - unstakeDurationPeriod),
             "Cannot unstake yet, cooldown not expired."
         );
         unstaking[msg.sender] = false;

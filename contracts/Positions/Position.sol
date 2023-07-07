@@ -105,7 +105,8 @@ contract Position is IERC20, IPosition {
     /// Any options which have not been exercised will linger.
     /// @param beneficiary address of the Position token
     function expire(address payable beneficiary) external onlyMarket {
-        selfdestruct(beneficiary);
+        (bool sent, bytes memory data) = beneficiary.call{value: address(this).balance}("");
+        require(sent, "Failed");
     }
 
     /// @notice transfer is ERC20 function for transfer tokens

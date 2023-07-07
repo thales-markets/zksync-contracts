@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.0;
 
-import "./Proxy.sol";
+import "@openzeppelin/contracts/proxy/Proxy.sol";
 
 /**
  * @title UpgradeabilityProxy
  * @dev This contract represents a proxy where the implementation address to which it will delegate can be upgraded
  */
-contract UpgradeabilityProxy is Proxy {
+abstract contract UpgradeabilityProxy is Proxy {
     /**
      * @dev This event will be emitted every time the implementation gets upgraded
      * @param implementation representing the address of the upgraded implementation
@@ -21,11 +21,11 @@ contract UpgradeabilityProxy is Proxy {
     /**
      * @dev Constructor function
      */
-    function UpgradeabilityProxy() public {}
+    constructor() {}
 
     /**
      * @dev Tells the address of the current implementation
-     * @return address of the current implementation
+     * @return impl address of the current implementation
      */
     function implementation() public view returns (address impl) {
         bytes32 position = implementationPosition;

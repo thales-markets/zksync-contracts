@@ -1,0 +1,31 @@
+{
+  "_format": "hh-zksolc-artifact-1",
+  "contractName": "ISportsAMMLiquidityPool",
+  "sourceName": "contracts/interfaces/ISportsAMMLiquidityPool.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "isUserLPing",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "isUserInLP",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "factoryDeps": {}
+}

@@ -102,7 +102,8 @@ contract VestingEscrow is ReentrancyGuard, Owned {
         IERC20(token).transfer(beneficiary, IERC20(token).balanceOf(address(this)));
 
         // Destroy the option tokens before destroying the market itself.
-        selfdestruct(beneficiary);
+        (bool sent, bytes memory data) = beneficiary.call{value: address(this).balance}("");         
+        require(sent, "Failed");
     }
 
     function claim() external nonReentrant {
