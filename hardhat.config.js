@@ -15,6 +15,10 @@ require('@openzeppelin/hardhat-upgrades');
 require('hardhat-contract-sizer');
 require('@matterlabs/hardhat-zksync-toolbox');
 require('@matterlabs/hardhat-zksync-upgradable');
+require('@matterlabs/hardhat-zksync-solc');
+require('@matterlabs/hardhat-zksync-deploy');
+require('@matterlabs/hardhat-zksync-verify');
+require('zksync-web3');
 
 const {
 	constants: { inflationStartTimestampInSecs, AST_FILENAME, AST_FOLDER, BUILD_FOLDER },
@@ -148,7 +152,7 @@ module.exports = {
 		ignores: 'test-helpers',
 	},
 	zksolc: {
-		version: '1.3.13',
+		version: '1.3.14',
 		compilerSource: 'binary',
 		settings: {
 			//compilerPath: "zksolc",  // optional. Ignored for compilerSource "docker". Can be used if compiler is located in a specific folder
@@ -199,11 +203,13 @@ module.exports = {
 			zksync: true,
 			ethNetwork: 'goerli',
 			url: 'http://localhost:3050',
+			verifyURL: 'https://zksync2-mainnet-explorer.zksync.io/contract_verification',
 		},
 		zkTestnet: {
 			url: 'https://testnet.era.zksync.dev', // The testnet RPC URL of zkSync Era network.
 			ethNetwork: 'goerli', // The Ethereum Web3 RPC URL, or the identifier of the network (e.g. `mainnet` or `goerli`)
 			zksync: true,
+			verifyURL: 'https://zksync2-testnet-explorer.zksync.dev/contract_verification',
 		},
 		kovan: {
 			gasPrice: 'auto',

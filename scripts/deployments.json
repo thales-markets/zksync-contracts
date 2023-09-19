@@ -659,6 +659,9 @@
 		"ParlayDefaultLiquidityProvider": "0xE2c8EC9F0aF39530f00F13214ce9BA933034E59f",
 		"ParlayDefaultLiquidityProviderImplementation": "0xa01a9f8b3Ae18dDF755166F7eD93A2796Cd3fF27"
 	},
+	"zkTestnet": {
+		"SpeedMarketsAMM": "0xa3AAFE1Aab52FfB4319B5F940E3Dec0396965907"
+	},
 	"localhost": {
 		"Airdrop": "",
 		"OngoingAirdrop": "0xB74DD224F1652672Fc5d18404Fe5AF120e1e0991",
