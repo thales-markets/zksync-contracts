@@ -6,11 +6,10 @@ const { getTargetAddress, setTargetAddress } = require('../helpers');
 const { toBytes32 } = require('../../index');
 const w3utils = require('web3-utils');
 
-const { Wallet, Provider } = require("zksync-web3");
-const { Deployer } = require("@matterlabs/hardhat-zksync-deploy");
+const { Wallet, Provider } = require('zksync-web3');
+const { Deployer } = require('@matterlabs/hardhat-zksync-deploy');
 
-const hre = require("hardhat");
-
+const hre = require('hardhat');
 
 async function main() {
 	let networkObj = await ethers.provider.getNetwork();
@@ -65,6 +64,12 @@ async function main() {
 	if (networkObj.chainId == 280) {
 		networkObj.name = 'zkTestnet';
 		network = 'zkTestnet';
+		proxySUSD = getTargetAddress('ProxyUSDC', network);
+	}
+	if (networkObj.chainId == 324) {
+		networkObj.name = 'zkSyncNetwork';
+		network = 'zkSyncNetwork';
+		proxySUSD = getTargetAddress('ProxyUSDC', network);
 	}
 
 	let accounts = await ethers.getSigners();
@@ -73,36 +78,63 @@ async function main() {
 	// console.log('Owner is: ' + owner.address);
 	console.log('Network:' + network);
 	console.log('Network id:' + networkObj.chainId);
-	if(network == 'zkTestnet') {
-	
-		const zkSyncProvider = new Provider("https://testnet.era.zksync.dev/");
-		const ethereumProvider = ethers.getDefaultProvider("goerli");
+	if (network == 'zkTestnet') {
+		const zkSyncProvider = new Provider('https://testnet.era.zksync.dev/');
+		const ethereumProvider = ethers.getDefaultProvider('goerli');
 		const zkWallet = new Wallet(process.env.PRIVATE_KEY, zkSyncProvider, ethereumProvider);
 		const deployer = new Deployer(hre, zkWallet);
 
 		const contract = await deployer.loadArtifact('SpeedMarketsAMM');
-		
 
-		const SpeedMarketsAMM = await hre.zkUpgrades.deployProxy(deployer.zkWallet, contract, [
-			"0x8E89Fb3c4f98F5bB5894e2D802d6d4ED4ad196FC",
-			"0x8E89Fb3c4f98F5bB5894e2D802d6d4ED4ad196FC",
-			"0x8E89Fb3c4f98F5bB5894e2D802d6d4ED4ad196FC",
-		], { initializer: "initialize" });
-	  
+		const SpeedMarketsAMM = await hre.zkUpgrades.deployProxy(
+			deployer.zkWallet,
+			contract,
+			[zkWallet.address, proxySUSD, getTargetAddress('Pyth', network)],
+			{ initializer: 'initialize' }
+		);
+
 		await SpeedMarketsAMM.deployed();
-		console.log(contract.contractName + " deployed to:", SpeedMarketsAMM.address);
+		console.log(contract.contractName + ' deployed to:', SpeedMarketsAMM.address);
 		setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
+		await delay(5000);
+
 		try {
-			const verificationId = await hre.run("verify:verify", {
+			const verificationId = await hre.run('verify:verify', {
 				address: SpeedMarketsAMM.address,
 				contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
-				});
-
-		} catch(e) {
+			});
+		} catch (e) {
 			console.log(e);
 		}
-	}
-	else {
+	} else if (network == 'zkSyncNetwork') {
+		const zkSyncProvider = new Provider('https://mainnet.era.zksync.io');
+		const ethereumProvider = ethers.getDefaultProvider('mainnet');
+		const zkWallet = new Wallet(process.env.PRIVATE_KEY, zkSyncProvider, ethereumProvider);
+		const deployer = new Deployer(hre, zkWallet);
+
+		const contract = await deployer.loadArtifact('SpeedMarketsAMM');
+
+		const SpeedMarketsAMM = await hre.zkUpgrades.deployProxy(
+			deployer.zkWallet,
+			contract,
+			[zkWallet.address, proxySUSD, getTargetAddress('Pyth', network)],
+			{ initializer: 'initialize' }
+		);
+
+		await SpeedMarketsAMM.deployed();
+		console.log(contract.contractName + ' deployed to:', SpeedMarketsAMM.address);
+		setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
+		await delay(5000);
+
+		try {
+			const verificationId = await hre.run('verify:verify', {
+				address: SpeedMarketsAMM.address,
+				contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	} else {
 		const SpeedMarketsAMM = await ethers.getContractFactory('SpeedMarketsAMM');
 		let SpeedMarketsAMMDeployed = await upgrades.deployProxy(SpeedMarketsAMM, [
 			owner.address,
@@ -110,21 +142,21 @@ async function main() {
 			getTargetAddress('Pyth', network),
 		]);
 		await SpeedMarketsAMMDeployed.deployed();
-	
+
 		console.log('SpeedMarketsAMM proxy:', SpeedMarketsAMMDeployed.address);
-	
+
 		const SpeedMarketsAMMImplementation = await getImplementationAddress(
 			ethers.provider,
 			SpeedMarketsAMMDeployed.address
 		);
-	
+
 		console.log('Implementation SpeedMarketsAMM: ', SpeedMarketsAMMImplementation);
-	
+
 		setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMMDeployed.address);
 		setTargetAddress('SpeedMarketsAMMImplementation', network, SpeedMarketsAMMImplementation);
-	
+
 		delay(5000);
-	
+
 		try {
 			await hre.run('verify:verify', {
 				address: SpeedMarketsAMMImplementation,
@@ -133,7 +165,6 @@ async function main() {
 			console.log(e);
 		}
 	}
-
 }
 
 main()

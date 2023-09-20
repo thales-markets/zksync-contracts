@@ -201,8 +201,8 @@ module.exports = {
 		},
 		zkSyncNetwork: {
 			zksync: true,
-			ethNetwork: 'goerli',
-			url: 'http://localhost:3050',
+			ethNetwork: 'mainnet',
+			url: 'https://mainnet.era.zksync.io',
 			verifyURL: 'https://zksync2-mainnet-explorer.zksync.io/contract_verification',
 		},
 		zkTestnet: {

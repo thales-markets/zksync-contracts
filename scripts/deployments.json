@@ -660,7 +660,14 @@
 		"ParlayDefaultLiquidityProviderImplementation": "0xa01a9f8b3Ae18dDF755166F7eD93A2796Cd3fF27"
 	},
 	"zkTestnet": {
-		"SpeedMarketsAMM": "0xa3AAFE1Aab52FfB4319B5F940E3Dec0396965907"
+		"SpeedMarketsAMM": "0xa3AAFE1Aab52FfB4319B5F940E3Dec0396965907",
+		"Pyth": "0xC38B1dd611889Abc95d4E0a472A667c3671c08DE"
+	},
+	"zkSyncNetwork": {
+		"SpeedMarketsAMM": "0xfff42d07E4381dD0aF0bbFA874b0a94B7BCf3653",
+		"ProxyUSDC": "0x3355df6D4c9C3035724Fd0e3914dE96A5a83aaf4",
+		"Pyth": "0xf087c864AEccFb6A2Bf1Af6A0382B0d0f6c5D834",
+		"SpeedMarketMastercopy": "0x85EC8f3D82a73D0E1f3a66a55224E9196bD97938"
 	},
 	"localhost": {
 		"Airdrop": "",
