@@ -317,14 +317,14 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
 
     function createJustProxyMarket(bytes32 salt) external returns (address newContract) {
         // _createNewProxyMarket(salt);
-
+        bytes memory zeroBytes;
         (bool success, bytes memory returnData) = SystemContractsCaller.systemCallWithReturndata(
             uint32(gasleft()),
             address(DEPLOYER_SYSTEM_CONTRACT),
             uint128(0),
             abi.encodeCall(
                 DEPLOYER_SYSTEM_CONTRACT.create2Account,
-                (salt, speedContractHash, abi.encode(""), IContractDeployer.AccountAbstractionVersion.Version1)
+                (salt, speedContractHash, zeroBytes, IContractDeployer.AccountAbstractionVersion.Version1)
             )
         );
         require(success, "Deployment failed");
