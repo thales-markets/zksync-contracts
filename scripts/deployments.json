@@ -661,7 +661,8 @@
 	},
 	"zkTestnet": {
 		"SpeedMarketsAMM": "0xa3AAFE1Aab52FfB4319B5F940E3Dec0396965907",
-		"Pyth": "0xC38B1dd611889Abc95d4E0a472A667c3671c08DE"
+		"Pyth": "0xC38B1dd611889Abc95d4E0a472A667c3671c08DE",
+		"SpeedMarketMastercopy": "0x9AE9414A2773fA9E67e8BbF2FF9042C159E20838"
 	},
 	"zkSyncNetwork": {
 		"SpeedMarketsAMM": "0xfff42d07E4381dD0aF0bbFA874b0a94B7BCf3653",

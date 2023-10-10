@@ -4,6 +4,12 @@ const { getImplementationAddress } = require('@openzeppelin/upgrades-core');
 
 const { getTargetAddress, setTargetAddress } = require('../helpers');
 
+const { Wallet, Provider } = require('zksync-web3');
+const { Deployer } = require('@matterlabs/hardhat-zksync-deploy');
+
+const hre = require('hardhat');
+
+
 async function main() {
 	let accounts = await ethers.getSigners();
 	let owner = accounts[0];
@@ -67,52 +73,120 @@ async function main() {
 		network = 'bsc';
 		proxySUSD = getTargetAddress('BUSD', network);
 	}
+	if (networkObj.chainId == 280) {
+		networkObj.name = 'zkTestnet';
+		network = 'zkTestnet';
+		proxySUSD = getTargetAddress('ProxyUSDC', network);
+	}
+	if (networkObj.chainId == 324) {
+		networkObj.name = 'zkSyncNetwork';
+		network = 'zkSyncNetwork';
+		proxySUSD = getTargetAddress('ProxyUSDC', network);
+	}
+
 
 	const SpeedMarketsAMMAddress = getTargetAddress('SpeedMarketsAMM', network);
-	const SpeedMarketsAMM = await ethers.getContractFactory('SpeedMarketsAMM');
 
-	if (networkObj.chainId == 42 || networkObj.chainId == 5 || networkObj.chainId == 420) {
-		await upgrades.upgradeProxy(SpeedMarketsAMMAddress, SpeedMarketsAMM);
-		await delay(15000);
+	if (network == 'zkTestnet') {
+		const zkSyncProvider = new Provider('https://testnet.era.zksync.dev/');
+		const ethereumProvider = ethers.getDefaultProvider('goerli');
+		const zkWallet = new Wallet(process.env.PRIVATE_KEY, zkSyncProvider, ethereumProvider);
+		const deployer = new Deployer(hre, zkWallet);
 
-		const SpeedMarketsAMMImplementation = await getImplementationAddress(
-			ethers.provider,
-			SpeedMarketsAMMAddress
+		const contract = await deployer.loadArtifact('SpeedMarketsAMM');
+
+		const SpeedMarketsAMM = await hre.zkUpgrades.upgradeProxy(
+			deployer.zkWallet,
+			SpeedMarketsAMMAddress,
+			contract
 		);
-		console.log('SpeedMarketsAMM upgraded');
 
-		console.log('Implementation SpeedMarketsAMM: ', SpeedMarketsAMMImplementation);
-		setTargetAddress('SpeedMarketsAMMImplementation', network, SpeedMarketsAMMImplementation);
+		// await SpeedMarketsAMM.deployed();
+		// console.log(contract.contractName + ' deployed to:', SpeedMarketsAMM.address);
+		// setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
+		// await delay(5000);
 
 		try {
-			await hre.run('verify:verify', {
-				address: SpeedMarketsAMMImplementation,
+			const verificationId = await hre.run('verify:verify', {
+				address: SpeedMarketsAMMAddress,
+				contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
 			});
 		} catch (e) {
 			console.log(e);
 		}
-	}
+	} else if (network == 'zkSyncNetwork') {
+		const zkSyncProvider = new Provider('https://mainnet.era.zksync.io');
+		const ethereumProvider = ethers.getDefaultProvider('mainnet');
+		const zkWallet = new Wallet(process.env.PRIVATE_KEY, zkSyncProvider, ethereumProvider);
+		const deployer = new Deployer(hre, zkWallet);
 
-	if (
-		networkObj.chainId == 10 ||
-		networkObj.chainId == 42161 ||
-		networkObj.chainId == 137 ||
-		networkObj.chainId == 56 ||
-		networkObj.chainId == 8453
-	) {
-		const implementation = await upgrades.prepareUpgrade(SpeedMarketsAMMAddress, SpeedMarketsAMM);
-		await delay(5000);
+		const contract = await deployer.loadArtifact('SpeedMarketsAMM');
 
-		console.log('SpeedMarketsAMM upgraded');
+		const SpeedMarketsAMM = await hre.zkUpgrades.upgradeProxy(
+			deployer.zkWallet,
+			SpeedMarketsAMMAddress,
+			contract
+		);
 
-		console.log('Implementation SpeedMarketsAMM: ', implementation);
-		setTargetAddress('SpeedMarketsAMMImplementation', network, implementation);
+		// await SpeedMarketsAMM.deployed();
+		// console.log(contract.contractName + ' deployed to:', SpeedMarketsAMM.address);
+		// setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
+		// await delay(5000);
+
 		try {
-			await hre.run('verify:verify', {
-				address: implementation,
+			const verificationId = await hre.run('verify:verify', {
+				address: SpeedMarketsAMMAddress,
+				contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
 			});
 		} catch (e) {
 			console.log(e);
+		}
+	} else {
+		const SpeedMarketsAMM = await ethers.getContractFactory('SpeedMarketsAMM');
+
+		if (networkObj.chainId == 42 || networkObj.chainId == 5 || networkObj.chainId == 420) {
+			await upgrades.upgradeProxy(SpeedMarketsAMMAddress, SpeedMarketsAMM);
+			await delay(15000);
+
+			const SpeedMarketsAMMImplementation = await getImplementationAddress(
+				ethers.provider,
+				SpeedMarketsAMMAddress
+			);
+			console.log('SpeedMarketsAMM upgraded');
+
+			console.log('Implementation SpeedMarketsAMM: ', SpeedMarketsAMMImplementation);
+			setTargetAddress('SpeedMarketsAMMImplementation', network, SpeedMarketsAMMImplementation);
+
+			try {
+				await hre.run('verify:verify', {
+					address: SpeedMarketsAMMImplementation,
+				});
+			} catch (e) {
+				console.log(e);
+			}
+		}
+
+		if (
+			networkObj.chainId == 10 ||
+			networkObj.chainId == 42161 ||
+			networkObj.chainId == 137 ||
+			networkObj.chainId == 56 ||
+			networkObj.chainId == 8453
+		) {
+			const implementation = await upgrades.prepareUpgrade(SpeedMarketsAMMAddress, SpeedMarketsAMM);
+			await delay(5000);
+
+			console.log('SpeedMarketsAMM upgraded');
+
+			console.log('Implementation SpeedMarketsAMM: ', implementation);
+			setTargetAddress('SpeedMarketsAMMImplementation', network, implementation);
+			try {
+				await hre.run('verify:verify', {
+					address: implementation,
+				});
+			} catch (e) {
+				console.log(e);
+			}
 		}
 	}
 }

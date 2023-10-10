@@ -68,6 +68,7 @@ async function main() {
 		const deployer = new Deployer(hre, zkWallet);
 
 		const contract = await deployer.loadArtifact('SpeedMarketMastercopy');
+		// const contract = await deployer.loadArtifact('DummySpeedMarket');
 		// const deploymentFee = await deployer.estimateDeployFee(contract);
 
 		// const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
@@ -91,6 +92,7 @@ async function main() {
 		try {
 			const verificationId = await hre.run('verify:verify', {
 				address: SpeedMarketMastercopy.address,
+				// contract: 'contracts/SpeedMarkets/DummySpeedMarket.sol:DummySpeedMarket',
 				contract: 'contracts/SpeedMarkets/SpeedMarketMastercopy.sol:SpeedMarketMastercopy',
 			});
 		} catch (e) {

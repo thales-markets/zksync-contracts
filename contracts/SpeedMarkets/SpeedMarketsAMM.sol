@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
 
 // external
 import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
@@ -23,9 +23,13 @@ import "../utils/libraries/AddressSetLib.sol";
 
 import "../interfaces/IStakingThales.sol";
 import "../interfaces/IMultiCollateralOnOffRamp.sol";
+// import "../interfaces/IContractDeployer.sol";
 import {IReferrals} from "../interfaces/IReferrals.sol";
 
 import "./SpeedMarket.sol";
+
+import "@matterlabs/zksync-contracts/l2/system-contracts/Constants.sol";
+import "@matterlabs/zksync-contracts/l2/system-contracts/libraries/SystemContractsCaller.sol";
 
 /// @title An AMM for Thales speed markets
 contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
@@ -103,11 +107,13 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
 
     address public referrals;
 
-    function initialize(
-        address _owner,
-        IERC20Upgradeable _sUSD,
-        IPyth _pyth
-    ) public initializer {
+    address public speedContract;
+
+    bytes32 public speedContractHash;
+
+    address public contractDeployer;
+
+    function initialize(address _owner, IERC20Upgradeable _sUSD, IPyth _pyth) public initializer {
         setOwner(_owner);
         initNonReentrant();
         sUSD = _sUSD;
@@ -180,11 +186,7 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
         );
     }
 
-    function _convertCollateral(
-        address collateral,
-        uint collateralAmount,
-        bool isEth
-    ) internal returns (uint buyinAmount) {
+    function _convertCollateral(address collateral, uint collateralAmount, bool isEth) internal returns (uint buyinAmount) {
         uint convertedAmount;
         if (isEth) {
             convertedAmount = multiCollateralOnOffRamp.onrampWithEth{value: collateralAmount}(collateralAmount);
@@ -226,11 +228,7 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
         }
     }
 
-    function _handleRisk(
-        bytes32 asset,
-        SpeedMarket.Direction direction,
-        uint buyinAmount
-    ) internal {
+    function _handleRisk(bytes32 asset, SpeedMarket.Direction direction, uint buyinAmount) internal {
         currentRiskPerAsset[asset] += buyinAmount;
         require(currentRiskPerAsset[asset] <= maxRiskPerAsset[asset], "OI cap breached");
 
@@ -309,6 +307,80 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
         emit MarketCreated(address(srm), msg.sender, asset, strikeTime, price.price, direction, buyinAmount);
     }
 
+    function setSpeedContractHash(bytes32 _speedContractHash) external {
+        speedContractHash = _speedContractHash;
+    }
+
+    function setContractDeployer(address _contractDeployer) external {
+        contractDeployer = _contractDeployer;
+    }
+
+    function createJustProxyMarket(bytes32 salt) external returns (address newContract) {
+        // _createNewProxyMarket(salt);
+
+        (bool success, bytes memory returnData) = SystemContractsCaller.systemCallWithReturndata(
+            uint32(gasleft()),
+            address(DEPLOYER_SYSTEM_CONTRACT),
+            uint128(0),
+            abi.encodeCall(
+                DEPLOYER_SYSTEM_CONTRACT.create2Account,
+                (salt, speedContractHash, abi.encode(msg.sender), IContractDeployer.AccountAbstractionVersion.Version1)
+            )
+        );
+        require(success, "Deployment failed");
+
+        (newContract) = abi.decode(returnData, (address));
+    }
+
+    function _createNewProxyMarket(bytes32 salt) internal {
+        bytes memory dummyBytes;
+        speedContract = IContractDeployer(contractDeployer).create2(salt, speedContractHash, dummyBytes);
+        // bytes32 asset = 0x4254430000000000000000000000000000000000000000000000000000000000;
+        // SpeedMarket srm = SpeedMarket(Clones.clone(speedMarketMastercopy));
+        // SpeedMarket srm = SpeedMarket(createClone(speedMarketMastercopy));
+        // bytes32 bytecodeHash = 0x0100027d7f750c91f9217c2d9d013afb83690bd92da757e5613e39fa6f860702;
+        // speedContract = new SpeedMarket();
+
+        // srm.initialize(
+        //     SpeedMarket.InitParams(address(this), msg.sender, asset, 55555, 1e7, SpeedMarket.Direction.Up, 66666)
+        // );
+        // emit MarketCreated(msg.sender, msg.sender, 0x4254430000000000000000000000000000000000000000000000000000000000, 55555, 1e7, SpeedMarket.Direction.Up, 66666);
+        emit MarketCreated(
+            speedContract,
+            msg.sender,
+            0x4254430000000000000000000000000000000000000000000000000000000000,
+            55555,
+            777,
+            SpeedMarket.Direction.Up,
+            66666
+        );
+    }
+
+    function _updatePriceMarket(bytes32 asset, bytes[] memory priceUpdateData) internal {
+        uint fee = pyth.getUpdateFee(priceUpdateData);
+        pyth.updatePriceFeeds{value: fee}(priceUpdateData);
+
+        PythStructs.Price memory price = pyth.getPrice(assetToPythId[asset]);
+
+        emit MarketCreated(address(this), msg.sender, asset, 55555, price.price, SpeedMarket.Direction.Up, 66666);
+    }
+
+    function createClone(address target) internal returns (address result) {
+        bytes20 targetBytes = bytes20(target) << 16;
+        assembly {
+            let clone := mload(0x40)
+            mstore(clone, 0x3d602b80600a3d3981f3363d3d373d3d3d363d71000000000000000000000000)
+            mstore(add(clone, 0x14), targetBytes)
+            mstore(add(clone, 0x26), 0x5af43d82803e903d91602957fd5bf30000000000000000000000000000000000)
+            result := create(0, clone, 0x35)
+        }
+        require(result != address(0), "ERC1167: custom create failed");
+    }
+
+    function updatePriceMarket(bytes32 asset, bytes[] memory priceUpdateData) external payable nonReentrant notPaused {
+        _updatePriceMarket(asset, priceUpdateData);
+    }
+
     /// @notice resolveMarket resolves an active market
     /// @param market address of the market
     function resolveMarket(address market, bytes[] calldata priceUpdateData) external payable nonReentrant notPaused {
@@ -316,12 +388,10 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
     }
 
     /// @notice resolveMarkets in a batch
-    function resolveMarketsBatch(address[] calldata markets, bytes[] calldata priceUpdateData)
-        external
-        payable
-        nonReentrant
-        notPaused
-    {
+    function resolveMarketsBatch(
+        address[] calldata markets,
+        bytes[] calldata priceUpdateData
+    ) external payable nonReentrant notPaused {
         for (uint i = 0; i < markets.length; i++) {
             address market = markets[i];
             if (canResolveMarket(market)) {
@@ -359,10 +429,10 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
     }
 
     /// @notice admin resolve for a given markets with finalPrices
-    function resolveMarketManuallyBatch(address[] calldata markets, int64[] calldata finalPrices)
-        external
-        isAddressWhitelisted
-    {
+    function resolveMarketManuallyBatch(
+        address[] calldata markets,
+        int64[] calldata finalPrices
+    ) external isAddressWhitelisted {
         for (uint i = 0; i < markets.length; i++) {
             if (canResolveMarket(markets[i])) {
                 _resolveMarketManually(markets[i], finalPrices[i]);
@@ -457,11 +527,7 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
     }
 
     /// @notice activeMarkets returns list of active markets per user
-    function activeMarketsPerUser(
-        uint index,
-        uint pageSize,
-        address user
-    ) external view returns (address[] memory) {
+    function activeMarketsPerUser(uint index, uint pageSize, address user) external view returns (address[] memory) {
         return _activeMarketsPerUser[user].getPage(index, pageSize);
     }
 
@@ -471,11 +537,7 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
     }
 
     /// @notice maturedMarkets returns list of matured markets per user
-    function maturedMarketsPerUser(
-        uint index,
-        uint pageSize,
-        address user
-    ) external view returns (address[] memory) {
+    function maturedMarketsPerUser(uint index, uint pageSize, address user) external view returns (address[] memory) {
         return _maturedMarketsPerUser[user].getPage(index, pageSize);
     }
 
