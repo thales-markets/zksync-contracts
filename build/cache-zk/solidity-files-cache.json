@@ -8646,8 +8646,8 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/contracts/SpeedMarkets/SpeedMarketsAMM.sol": {
-      "lastModificationDate": 1696922931145,
-      "contentHash": "df673e5732d23ac3d17967f8a7a4ee29",
+      "lastModificationDate": 1696924062492,
+      "contentHash": "78c4724c3d44c1e6668705835f0698ca",
       "sourceName": "contracts/SpeedMarkets/SpeedMarketsAMM.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -9225,8 +9225,8 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/contracts/SpeedMarkets/DummySpeedMarket.sol": {
-      "lastModificationDate": 1695895223567,
-      "contentHash": "b91567de7eb6432ccced50a9f9be51f8",
+      "lastModificationDate": 1696923886653,
+      "contentHash": "1f553bf6981887875b614a128e0e2cdd",
       "sourceName": "contracts/SpeedMarkets/DummySpeedMarket.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -9278,8 +9278,8 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/contracts/interfaces/IContractDeployer.sol": {
-      "lastModificationDate": 1695896921861,
-      "contentHash": "e4d248836adf80587523361406d0a326",
+      "lastModificationDate": 1696923826840,
+      "contentHash": "48cdc1069fcdebdc2d1374c52817b6c2",
       "sourceName": "contracts/interfaces/IContractDeployer.sol",
       "solcConfig": {
         "version": "0.8.19",

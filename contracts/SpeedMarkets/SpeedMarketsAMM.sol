@@ -324,7 +324,7 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
             uint128(0),
             abi.encodeCall(
                 DEPLOYER_SYSTEM_CONTRACT.create2Account,
-                (salt, speedContractHash, abi.encode(msg.sender), IContractDeployer.AccountAbstractionVersion.Version1)
+                (salt, speedContractHash, abi.encode(""), IContractDeployer.AccountAbstractionVersion.Version1)
             )
         );
         require(success, "Deployment failed");
