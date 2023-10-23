@@ -85,8 +85,8 @@ async function main() {
 		const zkWallet = new Wallet(process.env.PRIVATE_KEY, zkSyncProvider, ethereumProvider);
 		const deployer = new Deployer(hre, zkWallet);
 
-		const contract = await deployer.loadArtifact('SpeedMarketsAMM');
-		const speedMarket = await deployer.loadArtifact('SpeedMarket');
+		const contract = await deployer.loadArtifact('AAFactory');
+		const speedMarket = await deployer.loadArtifact('TwoUserMultiSig');
 		const speedMasterHash = utils.hashBytecode(speedMarket.bytecode);
 		const SpeedMarketsAMM = await deployer.deploy(contract, [speedMasterHash], undefined, [
 			speedMarket.bytecode,
@@ -100,8 +100,8 @@ async function main() {
 		const contractAddress = SpeedMarketsAMM.address;
 		console.log(`${contract.contractName} was deployed to ${contractAddress}`);
 
-		console.log('SpeedMarketsAMM deployed to:', SpeedMarketsAMM.address);
-		setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
+		console.log('AAFactory deployed to:', SpeedMarketsAMM.address);
+		setTargetAddress('AAFactory', network, SpeedMarketsAMM.address);
 
 		await delay(25000);
 
@@ -109,12 +109,34 @@ async function main() {
 			const verificationId = await hre.run('verify:verify', {
 				address: SpeedMarketsAMM.address,
 				// contract: 'contracts/SpeedMarkets/DummySpeedMarket.sol:DummySpeedMarket',
-				contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
+				// contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
+				contract: 'contracts/SpeedMarkets/AAFactory.sol:AAFactory',
 				constructorArguments: [speedMasterHash],
 			});
 		} catch (e) {
 			console.log(e);
 		}
+
+		await delay(25000);
+		console.log('start deploying accounts');
+		const salt = ethers.constants.HashZero;
+		const owner1 = Wallet.createRandom();
+		const owner2 = Wallet.createRandom();
+		console.log('salt: ', salt);
+		console.log('owner1: ', owner1.address);
+		console.log('owner2: ', owner2.address);
+
+		const tx = await SpeedMarketsAMM.deployAccount(salt, owner1.address, owner2.address);
+		await tx.wait();
+
+		const abiCoder = new ethers.utils.AbiCoder();
+		const multisigAddress = utils.create2Address(
+			SpeedMarketsAMM.address,
+			await SpeedMarketsAMM.aaBytecodeHash(),
+			salt,
+			abiCoder.encode(['address', 'address'], [owner1.address, owner2.address])
+		);
+		console.log(`Multisig account deployed on address ${multisigAddress}`);
 
 		// const SpeedMarketsAMM = await hre.zkUpgrades.deployProxy(
 		// 	deployer.zkWallet,
