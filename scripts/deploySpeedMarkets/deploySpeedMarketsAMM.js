@@ -6,7 +6,7 @@ const { getTargetAddress, setTargetAddress } = require('../helpers');
 const { toBytes32 } = require('../../index');
 const w3utils = require('web3-utils');
 
-const { Wallet, Provider } = require('zksync-web3');
+const { utils, Wallet, Provider } = require('zksync-web3');
 const { Deployer } = require('@matterlabs/hardhat-zksync-deploy');
 
 const hre = require('hardhat');
@@ -74,6 +74,7 @@ async function main() {
 
 	let accounts = await ethers.getSigners();
 	let owner = accounts[0];
+	// let speedMasterHash = '0x0100029df27f12cec5258e3e4e96e07740510c368e78e8642cab53541befbc8d';
 
 	// console.log('Owner is: ' + owner.address);
 	console.log('Network:' + network);
@@ -85,27 +86,56 @@ async function main() {
 		const deployer = new Deployer(hre, zkWallet);
 
 		const contract = await deployer.loadArtifact('SpeedMarketsAMM');
-
-		const SpeedMarketsAMM = await hre.zkUpgrades.deployProxy(
-			deployer.zkWallet,
-			contract,
-			[zkWallet.address, proxySUSD, getTargetAddress('Pyth', network)],
-			{ initializer: 'initialize' }
-		);
+		const speedMarket = await deployer.loadArtifact('SpeedMarket');
+		const speedMasterHash = utils.hashBytecode(speedMarket.bytecode);
+		const SpeedMarketsAMM = await deployer.deploy(contract, [speedMasterHash], undefined, [
+			speedMarket.bytecode,
+		]);
 
 		await SpeedMarketsAMM.deployed();
-		console.log(contract.contractName + ' deployed to:', SpeedMarketsAMM.address);
+		//obtain the Constructor Arguments
+		// console.log("constructor args:" + greeterContract.interface.encodeDeploy([greeting]));
+
+		// Show the contract info.
+		const contractAddress = SpeedMarketsAMM.address;
+		console.log(`${contract.contractName} was deployed to ${contractAddress}`);
+
+		console.log('SpeedMarketsAMM deployed to:', SpeedMarketsAMM.address);
 		setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
-		await delay(5000);
+
+		await delay(25000);
 
 		try {
 			const verificationId = await hre.run('verify:verify', {
 				address: SpeedMarketsAMM.address,
+				// contract: 'contracts/SpeedMarkets/DummySpeedMarket.sol:DummySpeedMarket',
 				contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
+				constructorArguments: [speedMasterHash],
 			});
 		} catch (e) {
 			console.log(e);
 		}
+
+		// const SpeedMarketsAMM = await hre.zkUpgrades.deployProxy(
+		// 	deployer.zkWallet,
+		// 	contract,
+		// 	[zkWallet.address, proxySUSD, getTargetAddress('Pyth', network), speedMasterHash],
+		// 	{ initializer: 'initialize' }
+		// );
+
+		// await SpeedMarketsAMM.deployed();
+		// console.log(contract.contractName + ' deployed to:', SpeedMarketsAMM.address);
+		// setTargetAddress('SpeedMarketsAMM', network, SpeedMarketsAMM.address);
+		// await delay(5000);
+
+		// try {
+		// 	const verificationId = await hre.run('verify:verify', {
+		// 		address: SpeedMarketsAMM.address,
+		// 		contract: 'contracts/SpeedMarkets/SpeedMarketsAMM.sol:SpeedMarketsAMM',
+		// 	});
+		// } catch (e) {
+		// 	console.log(e);
+		// }
 	} else if (network == 'zkSyncNetwork') {
 		const zkSyncProvider = new Provider('https://mainnet.era.zksync.io');
 		const ethereumProvider = ethers.getDefaultProvider('mainnet');

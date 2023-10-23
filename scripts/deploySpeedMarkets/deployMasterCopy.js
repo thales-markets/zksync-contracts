@@ -74,7 +74,7 @@ async function main() {
 		// const parsedFee = ethers.utils.formatEther(deploymentFee.toString());
 		// console.log(`The deployment is estimated to cost ${parsedFee} ETH`);
 
-		const SpeedMarketMastercopy = await deployer.deploy(contract);
+		const SpeedMarketMastercopy = await deployer.deploy(contract, [zkWallet.address]);
 
 		await SpeedMarketMastercopy.deployed();
 		//obtain the Constructor Arguments
@@ -94,6 +94,7 @@ async function main() {
 				address: SpeedMarketMastercopy.address,
 				// contract: 'contracts/SpeedMarkets/DummySpeedMarket.sol:DummySpeedMarket',
 				contract: 'contracts/SpeedMarkets/SpeedMarketMastercopy.sol:SpeedMarketMastercopy',
+				constructorArguments: [zkWallet.address],
 			});
 		} catch (e) {
 			console.log(e);

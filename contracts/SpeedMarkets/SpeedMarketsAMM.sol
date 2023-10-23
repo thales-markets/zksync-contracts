@@ -113,6 +113,20 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
 
     address public contractDeployer;
 
+    constructor(bytes32 _speedMarketHash) {
+        speedContractHash = _speedMarketHash;
+        setOwner(msg.sender);
+        initNonReentrant();
+    }
+
+    // constructor(address _owner, IERC20Upgradeable _sUSD, IPyth _pyth, bytes32 _speedMarketHash) {
+    //     setOwner(_owner);
+    //     initNonReentrant();
+    //     sUSD = _sUSD;
+    //     pyth = _pyth;
+    //     speedContractHash = _speedMarketHash;
+    // }
+
     function initialize(address _owner, IERC20Upgradeable _sUSD, IPyth _pyth) public initializer {
         setOwner(_owner);
         initNonReentrant();
@@ -315,16 +329,14 @@ contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReent
         contractDeployer = _contractDeployer;
     }
 
-    function createJustProxyMarket(bytes32 salt) external returns (address newContract) {
-        // _createNewProxyMarket(salt);
-        bytes memory zeroBytes;
+    function createJustProxyMarket(bytes32 salt, address _add1, address _add2) external returns (address newContract) {
         (bool success, bytes memory returnData) = SystemContractsCaller.systemCallWithReturndata(
             uint32(gasleft()),
             address(DEPLOYER_SYSTEM_CONTRACT),
             uint128(0),
             abi.encodeCall(
                 DEPLOYER_SYSTEM_CONTRACT.create2Account,
-                (salt, speedContractHash, zeroBytes, IContractDeployer.AccountAbstractionVersion.Version1)
+                (salt, speedContractHash, abi.encode(_add1, _add2), IContractDeployer.AccountAbstractionVersion.Version1)
             )
         );
         require(success, "Deployment failed");

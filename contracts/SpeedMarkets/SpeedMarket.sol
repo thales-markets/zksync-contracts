@@ -37,13 +37,24 @@ contract SpeedMarket {
 
     SpeedMarketsAMM public speedMarketsAMM;
 
+    address public owner;
+
+    address public add1;
+    address public add2;
+
     uint256 public createdAt;
 
     /* ========== CONSTRUCTOR ========== */
 
     bool public initialized = false;
 
-    function initialize(InitParams calldata params) external {
+    constructor(address _add1, address _add2) {
+        owner = msg.sender;
+        add1 = _add1;
+        add2 = _add2;
+    }
+
+    function initialize(InitParams calldata params) external onlyOwner {
         require(!initialized, "Speed market already initialized");
         initialized = true;
         speedMarketsAMM = SpeedMarketsAMM(params._speedMarketsAMM);
@@ -84,6 +95,10 @@ contract SpeedMarket {
 
     modifier onlyAMM() {
         require(msg.sender == address(speedMarketsAMM), "only the AMM may perform these methods");
+        _;
+    }
+    modifier onlyOwner() {
+        require(msg.sender == owner, "only owner");
         _;
     }
 
