@@ -1,14 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.0;
 
 // external
-import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/math/MathUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/math/SafeMathUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
+import "@openzeppelin/contracts/proxy/Clones.sol";
 
 import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
@@ -24,12 +18,20 @@ import "../interfaces/IMultiCollateralOnOffRamp.sol";
 // import "../interfaces/IContractDeployer.sol";
 import {IReferrals} from "../interfaces/IReferrals.sol";
 
+import "../interfaces/IAddressManager.sol";
+import "../interfaces/ISpeedMarketsAMM.sol";
+
+import "./SpeedMarket.sol";
 
 import "@matterlabs/zksync-contracts/l2/system-contracts/Constants.sol";
 import "@matterlabs/zksync-contracts/l2/system-contracts/libraries/SystemContractsCaller.sol";
 
+
+import "./SpeedMarket.sol";
+import "./SpeedMarketsAMMUtils.sol";
+
 /// @title An AMM for Thales speed markets
-contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
+contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
     using SafeERC20Upgradeable for IERC20Upgradeable;
     using AddressSetLib for AddressSetLib.AddressSet;
 
@@ -52,13 +54,13 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         uint256 createdAt;
     }
     
-    struct Risk {
-        Direction direction;
-        uint current;
-        uint max;
+    struct TempData {
+        uint lpFeeWithSkew;
+        PythStructs.Price pythPrice;
     }
     
     uint private constant ONE = 1e18;
+    uint private constant MAX_APPROVAL = type(uint256).max;
     IERC20Upgradeable public sUSD;
     //eth 0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace
     IPyth public pyth;
@@ -88,128 +90,124 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
 
     mapping(address => bool) public whitelistedAddresses;
 
-    // bellow subject to change/remove:
-
-    AddressSetLib.AddressSet internal _activeMarkets;
-    AddressSetLib.AddressSet internal _maturedMarkets;
-
-    IMultiCollateralOnOffRamp public multiCollateralOnOffRamp;
-    bool public multicollateralEnabled;
-
-  
-
-
-    mapping(address => bool) private marketHasCreatedAtAttribute;
-
-    address public referrals;
-
-    address public speedContract;
-
-    bytes32 public speedContractHash;
-
-    address public contractDeployer;
-    
     mapping(address => AddressSetLib.AddressSet) internal _activeMarketsPerUser;
     mapping(address => AddressSetLib.AddressSet) internal _maturedMarketsPerUser;
 
+    IMultiCollateralOnOffRamp private multiCollateralOnOffRamp; // unused, moved to AddressManager
+    bool public multicollateralEnabled;
 
-    constructor(bytes32 _speedMarketHash) {
-        speedContractHash = _speedMarketHash;
-        setOwner(msg.sender);
-        initNonReentrant();
-    }
+    mapping(address => bool) public marketHasCreatedAtAttribute;
 
-    // constructor(address _owner, IERC20Upgradeable _sUSD, IPyth _pyth, bytes32 _speedMarketHash) {
-    //     setOwner(_owner);
-    //     initNonReentrant();
-    //     sUSD = _sUSD;
-    //     pyth = _pyth;
-    //     speedContractHash = _speedMarketHash;
-    // }
+    address private referrals; // unused, moved to AddressManager
 
-    function initialize(address _owner, IERC20Upgradeable _sUSD, IPyth _pyth) public initializer {
+    uint[] public timeThresholdsForFees;
+    uint[] public lpFees;
+
+    SpeedMarketsAMMUtils private speedMarketsAMMUtils;
+
+    mapping(address => bool) public marketHasFeeAttribute;
+
+    /// @return The address of the address manager contract
+    IAddressManager public addressManager;
+
+    uint public maxSkewImpact;
+    uint private constant SKEW_SLIPPAGE = 1e16;
+
+    // using this to solve stack too deep
+
+    receive() external payable {}
+
+    function initialize(address _owner, IERC20Upgradeable _sUSD) external initializer {
         setOwner(_owner);
         initNonReentrant();
         sUSD = _sUSD;
-        pyth = _pyth;
     }
 
+    /// @notice create new market for given strike time, in case it is zero delta time is used
     function createNewMarket(
         bytes32 asset,
         uint64 strikeTime,
-        Direction direction,
-        uint buyinAmount,
-        bytes[] calldata priceUpdateData,
-        address _referrer
-    ) external payable nonReentrant notPaused {
-        _createNewMarket(asset, strikeTime, direction, buyinAmount, priceUpdateData, true, _referrer);
-    }
-
-    function createNewMarketWithDelta(
-        bytes32 asset,
         uint64 delta,
         Direction direction,
         uint buyinAmount,
         bytes[] calldata priceUpdateData,
-        address _referrer
+        address referrer,
+        uint skewImpact
     ) external payable nonReentrant notPaused {
-        _createNewMarket(asset, uint64(block.timestamp + delta), direction, buyinAmount, priceUpdateData, true, _referrer);
+        IAddressManager.Addresses memory contractsAddresses = addressManager.getAddresses();
+        _createNewMarket(
+            asset,
+            strikeTime == 0 ? uint64(block.timestamp + delta) : strikeTime,
+            direction,
+            buyinAmount,
+            priceUpdateData,
+            true,
+            referrer,
+            skewImpact,
+            contractsAddresses
+        );
     }
 
+    /// @notice create new market with different collateral (not sUSD) for a given strike time, in case it is zero delta time is used
     function createNewMarketWithDifferentCollateral(
         bytes32 asset,
         uint64 strikeTime,
-        Direction direction,
-        bytes[] calldata priceUpdateData,
-        address collateral,
-        uint collateralAmount,
-        bool isEth,
-        address _referrer
-    ) external payable nonReentrant notPaused {
-        _createNewMarketWithDifferentCollateral(
-            asset,
-            strikeTime,
-            direction,
-            priceUpdateData,
-            collateral,
-            collateralAmount,
-            isEth,
-            _referrer
-        );
-    }
-
-    function createNewMarketWithDifferentCollateralAndDelta(
-        bytes32 asset,
         uint64 delta,
         Direction direction,
         bytes[] calldata priceUpdateData,
         address collateral,
         uint collateralAmount,
         bool isEth,
-        address _referrer
+        address referrer,
+        uint skewImpact
     ) external payable nonReentrant notPaused {
         _createNewMarketWithDifferentCollateral(
             asset,
-            uint64(block.timestamp + delta),
+            strikeTime == 0 ? uint64(block.timestamp + delta) : strikeTime,
             direction,
             priceUpdateData,
             collateral,
             collateralAmount,
             isEth,
-            _referrer
+            referrer,
+            skewImpact
         );
     }
 
-    function _convertCollateral(address collateral, uint collateralAmount, bool isEth) internal returns (uint buyinAmount) {
+    function _getBuyinWithConversion(
+        address collateral,
+        uint collateralAmount,
+        bool isEth,
+        uint64 strikeTime,
+        IAddressManager.Addresses memory contractsAddresses
+    ) internal returns (uint buyinAmount) {
+        require(multicollateralEnabled, "Multicollateral onramp not enabled");
+        uint amountBefore = sUSD.balanceOf(address(this));
+
+        IMultiCollateralOnOffRamp iMultiCollateralOnOffRamp = IMultiCollateralOnOffRamp(
+            contractsAddresses.multiCollateralOnOffRamp
+        );
+
         uint convertedAmount;
         if (isEth) {
-            convertedAmount = multiCollateralOnOffRamp.onrampWithEth{value: collateralAmount}(collateralAmount);
+            convertedAmount = iMultiCollateralOnOffRamp.onrampWithEth{value: collateralAmount}(collateralAmount);
         } else {
             IERC20Upgradeable(collateral).safeTransferFrom(msg.sender, address(this), collateralAmount);
-            IERC20Upgradeable(collateral).approve(address(multiCollateralOnOffRamp), collateralAmount);
-            convertedAmount = multiCollateralOnOffRamp.onramp(collateral, collateralAmount);
+            IERC20Upgradeable(collateral).approve(address(iMultiCollateralOnOffRamp), collateralAmount);
+            convertedAmount = iMultiCollateralOnOffRamp.onramp(collateral, collateralAmount);
         }
-        buyinAmount = (convertedAmount * (ONE - safeBoxImpact - lpFee)) / ONE;
+
+        uint lpFeeForDeltaTime = speedMarketsAMMUtils.getFeeByTimeThreshold(
+            uint64(strikeTime - block.timestamp),
+            timeThresholdsForFees,
+            lpFees,
+            lpFee
+        );
+
+        buyinAmount = (convertedAmount * ONE) / (ONE + safeBoxImpact + lpFeeForDeltaTime);
+
+        uint amountDiff = sUSD.balanceOf(address(this)) - amountBefore;
+        require(amountDiff >= buyinAmount, "not enough received via onramp");
     }
 
     function _createNewMarketWithDifferentCollateral(
@@ -220,51 +218,102 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         address collateral,
         uint collateralAmount,
         bool isEth,
-        address _referrer
+        address referrer,
+        uint skewImpact
     ) internal {
-        require(multicollateralEnabled, "Multicollateral onramp not enabled");
-        uint buyinAmount = _convertCollateral(collateral, collateralAmount, isEth);
-        _createNewMarket(asset, strikeTime, direction, buyinAmount, priceUpdateData, false, _referrer);
+        IAddressManager.Addresses memory contractsAddresses = addressManager.getAddresses();
+        uint buyinAmount = _getBuyinWithConversion(collateral, collateralAmount, isEth, strikeTime, contractsAddresses);
+        _createNewMarket(
+            asset,
+            strikeTime,
+            direction,
+            buyinAmount,
+            priceUpdateData,
+            false,
+            referrer,
+            skewImpact,
+            contractsAddresses
+        );
     }
 
-    function _handleReferrer(address buyer, uint volume) internal returns (uint referrerShare) {
-        if (referrals != address(0)) {
-            address referrer = IReferrals(referrals).referrals(buyer);
-
-            if (referrer != address(0)) {
-                uint referrerFeeByTier = IReferrals(referrals).getReferrerFee(referrer);
-                if (referrerFeeByTier > 0) {
-                    referrerShare = (volume * referrerFeeByTier) / ONE;
-                    sUSD.safeTransfer(referrer, referrerShare);
-                    emit ReferrerPaid(referrer, buyer, referrerShare, volume);
-                }
-            }
-        }
+    function _getSkewByAssetAndDirection(bytes32 _asset, Direction _direction) internal returns (uint) {
+        return
+            (((currentRiskPerAssetAndDirection[_asset][_direction] * ONE) /
+                maxRiskPerAssetAndDirection[_asset][_direction]) * maxSkewImpact) / ONE;
     }
 
-    function _handleRisk(bytes32 asset, Direction direction, uint buyinAmount) internal {
-        currentRiskPerAsset[asset] += buyinAmount;
-        require(currentRiskPerAsset[asset] <= maxRiskPerAsset[asset], "OI cap breached");
+    function _handleRiskAndGetFee(
+        bytes32 asset,
+        Direction direction,
+        uint buyinAmount,
+        uint64 strikeTime,
+        uint skewImpact
+    ) internal returns (uint lpFeeWithSkew) {
+        uint skew = _getSkewByAssetAndDirection(asset, direction);
+        require(skew <= skewImpact + SKEW_SLIPPAGE, "Skew slippage exceeded");
 
         Direction oppositeDirection = direction == Direction.Up
             ? Direction.Down
             : Direction.Up;
-        uint amountToIncreaseRisk = buyinAmount;
-        // decrease risk for opposite direction
+
+        // calculate discount as half of skew for opposite direction
+        uint discount = skew == 0 ? _getSkewByAssetAndDirection(asset, oppositeDirection) / 2 : 0;
+
+        // decrease risk for opposite directionif there is, otherwise increase risk for current direction
         if (currentRiskPerAssetAndDirection[asset][oppositeDirection] > buyinAmount) {
             currentRiskPerAssetAndDirection[asset][oppositeDirection] -= buyinAmount;
         } else {
-            amountToIncreaseRisk = buyinAmount - currentRiskPerAssetAndDirection[asset][oppositeDirection];
+            currentRiskPerAssetAndDirection[asset][direction] +=
+                buyinAmount -
+                currentRiskPerAssetAndDirection[asset][oppositeDirection];
             currentRiskPerAssetAndDirection[asset][oppositeDirection] = 0;
-        }
-        // until there is risk for opposite direction, don't modify/check risk for current direction
-        if (currentRiskPerAssetAndDirection[asset][oppositeDirection] == 0) {
-            currentRiskPerAssetAndDirection[asset][direction] += amountToIncreaseRisk;
             require(
                 currentRiskPerAssetAndDirection[asset][direction] <= maxRiskPerAssetAndDirection[asset][direction],
                 "Risk per direction exceeded"
             );
         }
+
+        currentRiskPerAsset[asset] += buyinAmount * 2 - (buyinAmount * (ONE + lpFeeWithSkew)) / ONE;
+        require(currentRiskPerAsset[asset] <= maxRiskPerAsset[asset], "Risk per asset exceeded");
+
+        // LP fee by delta time + skew impact based on risk per direction and asset - discount as half of opposite skew
+        lpFeeWithSkew =
+            speedMarketsAMMUtils.getFeeByTimeThreshold(
+                uint64(strikeTime - block.timestamp),
+                timeThresholdsForFees,
+                lpFees,
+                lpFee
+            ) +
+            skew -
+            discount;
+    }
+
+    function _handleReferrerAndSafeBox(
+        address referrer,
+        uint buyinAmount,
+        IAddressManager.Addresses memory contractsAddresses
+    ) internal returns (uint referrerShare) {
+        IReferrals iReferrals = IReferrals(contractsAddresses.referrals);
+        if (address(iReferrals) != address(0)) {
+            address newOrExistingReferrer;
+            if (referrer != address(0)) {
+                iReferrals.setReferrer(referrer, msg.sender);
+                newOrExistingReferrer = referrer;
+            } else {
+                newOrExistingReferrer = iReferrals.referrals(msg.sender);
+            }
+
+            if (newOrExistingReferrer != address(0)) {
+                uint referrerFeeByTier = iReferrals.getReferrerFee(newOrExistingReferrer);
+                if (referrerFeeByTier > 0) {
+                    referrerShare = (buyinAmount * referrerFeeByTier) / ONE;
+                    sUSD.safeTransfer(newOrExistingReferrer, referrerShare);
+                    emit ReferrerPaid(newOrExistingReferrer, msg.sender, referrerShare, buyinAmount);
+                }
+            }
+        }
+
+        sUSD.safeTransfer(contractsAddresses.safeBox, (buyinAmount * safeBoxImpact) / ONE - referrerShare);
     }
 
     function _createNewMarket(
@@ -274,124 +323,72 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         uint buyinAmount,
         bytes[] memory priceUpdateData,
         bool transferSusd,
-        address _referrer
+        address referrer,
+        uint skewImpact,
+        IAddressManager.Addresses memory contractsAddresses
     ) internal {
-        if (_referrer != address(0)) {
-            IReferrals(referrals).setReferrer(_referrer, msg.sender);
-        }
         require(supportedAsset[asset], "Asset is not supported");
-        require(buyinAmount >= minBuyinAmount && buyinAmount <= maxBuyinAmount, "wrong buy in amount");
+        require(buyinAmount >= minBuyinAmount && buyinAmount <= maxBuyinAmount, "Wrong buy in amount");
+        require(strikeTime >= (block.timestamp + minimalTimeToMaturity), "Strike time not alloowed");
+        require(strikeTime <= block.timestamp + maximalTimeToMaturity, "Time too far into the future");
+
+        TempData memory tempData;
+        tempData.lpFeeWithSkew = _handleRiskAndGetFee(asset, direction, buyinAmount, strikeTime, skewImpact);
+
+        IPyth iPyth = IPyth(contractsAddresses.pyth);
+        iPyth.updatePriceFeeds{value: iPyth.getUpdateFee(priceUpdateData)}(priceUpdateData);
+
+        tempData.pythPrice = iPyth.getPriceUnsafe(assetToPythId[asset]);
+
         require(
-            strikeTime >= (block.timestamp + minimalTimeToMaturity),
-            "time has to be in the future + minimalTimeToMaturity"
+            (tempData.pythPrice.publishTime + maximumPriceDelay) > block.timestamp && tempData.pythPrice.price > 0,
+            "Stale price"
         );
-        require(strikeTime <= block.timestamp + maximalTimeToMaturity, "time too far into the future");
-
-        _handleRisk(asset, direction, buyinAmount);
-
-        uint fee = pyth.getUpdateFee(priceUpdateData);
-        pyth.updatePriceFeeds{value: fee}(priceUpdateData);
-
-        PythStructs.Price memory price = pyth.getPrice(assetToPythId[asset]);
-
-        require((price.publishTime + maximumPriceDelay) > block.timestamp && price.price > 0, "Stale price");
 
         if (transferSusd) {
-            uint totalAmountToTransfer = (buyinAmount * (ONE + safeBoxImpact + lpFee)) / ONE;
+            uint totalAmountToTransfer = (buyinAmount * (ONE + safeBoxImpact + tempData.lpFeeWithSkew)) / ONE;
             sUSD.safeTransferFrom(msg.sender, address(this), totalAmountToTransfer);
         }
-        // changes start here:
-        SpeedMarket srm = SpeedMarket(Clones.clone(speedMarketMastercopy));
-        srm.initialize(
-            SpeedMarket.InitParams(address(this), msg.sender, asset, strikeTime, price.price, direction, buyinAmount)
-        );
+        // SpeedMarket srm = SpeedMarket(Clones.clone(speedMarketMastercopy));
+        // srm.initialize(
+        //     SpeedMarket.InitParams(
+        //         address(this),
+        //         msg.sender,
+        //         asset,
+        //         strikeTime,
+        //         tempData.pythPrice.price,
+        //         direction,
+        //         buyinAmount,
+        //         safeBoxImpact,
+        //         tempData.lpFeeWithSkew
+        //     )
+        // );
 
         sUSD.safeTransfer(address(srm), buyinAmount * 2);
 
-        uint referrerShare = _handleReferrer(msg.sender, buyinAmount);
-        sUSD.safeTransfer(safeBox, (buyinAmount * safeBoxImpact) / ONE - referrerShare);
+        _handleReferrerAndSafeBox(referrer, buyinAmount, contractsAddresses);
 
         _activeMarkets.add(address(srm));
         _activeMarketsPerUser[msg.sender].add(address(srm));
 
-        if (address(stakingThales) != address(0)) {
-            stakingThales.updateVolume(msg.sender, buyinAmount);
+        if (contractsAddresses.stakingThales != address(0)) {
+            IStakingThales(contractsAddresses.stakingThales).updateVolume(msg.sender, buyinAmount);
         }
 
         marketHasCreatedAtAttribute[address(srm)] = true;
-        emit MarketCreated(address(srm), msg.sender, asset, strikeTime, price.price, direction, buyinAmount);
-    }
-
-    function setSpeedContractHash(bytes32 _speedContractHash) external {
-        speedContractHash = _speedContractHash;
-    }
-
-    function setContractDeployer(address _contractDeployer) external {
-        contractDeployer = _contractDeployer;
-    }
-
-    function createJustProxyMarket(bytes32 salt, address _add1, address _add2) external returns (address newContract) {
-        (bool success, bytes memory returnData) = SystemContractsCaller.systemCallWithReturndata(
-            uint32(gasleft()),
-            address(DEPLOYER_SYSTEM_CONTRACT),
-            uint128(0),
-            abi.encodeCall(
-                DEPLOYER_SYSTEM_CONTRACT.create2Account,
-                (salt, speedContractHash, abi.encode(_add1, _add2), IContractDeployer.AccountAbstractionVersion.Version1)
-            )
-        );
-        require(success, "Deployment failed");
-
-        (newContract) = abi.decode(returnData, (address));
-    }
-
-    function _createNewProxyMarket(bytes32 salt) internal {
-        bytes memory dummyBytes;
-        speedContract = IContractDeployer(contractDeployer).create2(salt, speedContractHash, dummyBytes);
-        // bytes32 asset = 0x4254430000000000000000000000000000000000000000000000000000000000;
-        // SpeedMarket srm = SpeedMarket(Clones.clone(speedMarketMastercopy));
-        // SpeedMarket srm = SpeedMarket(createClone(speedMarketMastercopy));
-        // bytes32 bytecodeHash = 0x0100027d7f750c91f9217c2d9d013afb83690bd92da757e5613e39fa6f860702;
-        // speedContract = new SpeedMarket();
-
-        // srm.initialize(
-        //     SpeedMarket.InitParams(address(this), msg.sender, asset, 55555, 1e7, Direction.Up, 66666)
-        // );
-        // emit MarketCreated(msg.sender, msg.sender, 0x4254430000000000000000000000000000000000000000000000000000000000, 55555, 1e7, Direction.Up, 66666);
-        emit MarketCreated(
-            speedContract,
+        marketHasFeeAttribute[address(srm)] = true;
+        emit MarketCreated(address(srm), msg.sender, asset, strikeTime, tempData.pythPrice.price, direction, buyinAmount);
+        emit MarketCreatedWithFees(
+            address(srm),
             msg.sender,
-            0x4254430000000000000000000000000000000000000000000000000000000000,
-            55555,
-            777,
-            Direction.Up,
-            66666
+            asset,
+            strikeTime,
+            tempData.pythPrice.price,
+            direction,
+            buyinAmount,
+            safeBoxImpact,
+            tempData.lpFeeWithSkew
         );
-    }
-
-    function _updatePriceMarket(bytes32 asset, bytes[] memory priceUpdateData) internal {
-        uint fee = pyth.getUpdateFee(priceUpdateData);
-        pyth.updatePriceFeeds{value: fee}(priceUpdateData);
-
-        PythStructs.Price memory price = pyth.getPrice(assetToPythId[asset]);
-
-        emit MarketCreated(address(this), msg.sender, asset, 55555, price.price, Direction.Up, 66666);
-    }
-
-    function createClone(address target) internal returns (address result) {
-        bytes20 targetBytes = bytes20(target) << 16;
-        assembly {
-            let clone := mload(0x40)
-            mstore(clone, 0x3d602b80600a3d3981f3363d3d373d3d3d363d71000000000000000000000000)
-            mstore(add(clone, 0x14), targetBytes)
-            mstore(add(clone, 0x26), 0x5af43d82803e903d91602957fd5bf30000000000000000000000000000000000)
-            result := create(0, clone, 0x35)
-        }
-        require(result != address(0), "ERC1167: custom create failed");
-    }
-
-    function updatePriceMarket(bytes32 asset, bytes[] memory priceUpdateData) external payable nonReentrant notPaused {
-        _updatePriceMarket(asset, priceUpdateData);
     }
 
     /// @notice resolveMarket resolves an active market
@@ -400,17 +397,48 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         _resolveMarket(market, priceUpdateData);
     }
 
-    /// @notice resolveMarkets in a batch
-    function resolveMarketsBatch(
-        address[] calldata markets,
-        bytes[] calldata priceUpdateData
+    /// @notice resolveMarket resolves an active market with offramp
+    /// @param market address of the market
+    function resolveMarketWithOfframp(
+        address market,
+        bytes[] calldata priceUpdateData,
+        address collateral,
+        bool toEth
     ) external payable nonReentrant notPaused {
+        address user = SpeedMarket(market).user();
+        require(msg.sender == user, "Only allowed from market owner");
+        uint amountBefore = sUSD.balanceOf(user);
+        _resolveMarket(market, priceUpdateData);
+        uint amountDiff = sUSD.balanceOf(user) - amountBefore;
+        sUSD.safeTransferFrom(user, address(this), amountDiff);
+        if (amountDiff > 0) {
+            IMultiCollateralOnOffRamp iMultiCollateralOnOffRamp = IMultiCollateralOnOffRamp(
+                addressManager.multiCollateralOnOffRamp()
+            );
+            if (toEth) {
+                uint offramped = iMultiCollateralOnOffRamp.offrampIntoEth(amountDiff);
+                address payable _to = payable(user);
+                bool sent = _to.send(offramped);
+                require(sent, "Failed to send Ether");
+            } else {
+                uint offramped = iMultiCollateralOnOffRamp.offramp(collateral, amountDiff);
+                IERC20Upgradeable(collateral).safeTransfer(user, offramped);
+            }
+        }
+    }
+
+    /// @notice resolveMarkets in a batch
+    function resolveMarketsBatch(address[] calldata markets, bytes[] calldata priceUpdateData)
+        external
+        payable
+        nonReentrant
+        notPaused
+    {
         for (uint i = 0; i < markets.length; i++) {
-            address market = markets[i];
-            if (canResolveMarket(market)) {
+            if (canResolveMarket(markets[i])) {
                 bytes[] memory subarray = new bytes[](1);
                 subarray[0] = priceUpdateData[i];
-                _resolveMarket(market, subarray);
+                _resolveMarket(markets[i], subarray);
             }
         }
     }
@@ -418,11 +446,10 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
     function _resolveMarket(address market, bytes[] memory priceUpdateData) internal {
         require(canResolveMarket(market), "Can not resolve");
 
-        uint fee = pyth.getUpdateFee(priceUpdateData);
-
+        IPyth iPyth = IPyth(addressManager.pyth());
         bytes32[] memory priceIds = new bytes32[](1);
         priceIds[0] = assetToPythId[SpeedMarket(market).asset()];
-        PythStructs.PriceFeed[] memory prices = pyth.parsePriceFeedUpdates{value: fee}(
+        PythStructs.PriceFeed[] memory prices = iPyth.parsePriceFeedUpdates{value: iPyth.getUpdateFee(priceUpdateData)}(
             priceUpdateData,
             priceIds,
             SpeedMarket(market).strikeTime(),
@@ -431,7 +458,7 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
 
         PythStructs.Price memory price = prices[0].price;
 
-        require(price.price > 0, "invalid price");
+        require(price.price > 0, "Invalid price");
 
         _resolveMarketWithPrice(market, price.price);
     }
@@ -442,10 +469,10 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
     }
 
     /// @notice admin resolve for a given markets with finalPrices
-    function resolveMarketManuallyBatch(
-        address[] calldata markets,
-        int64[] calldata finalPrices
-    ) external isAddressWhitelisted {
+    function resolveMarketManuallyBatch(address[] calldata markets, int64[] calldata finalPrices)
+        external
+        isAddressWhitelisted
+    {
         for (uint i = 0; i < markets.length; i++) {
             if (canResolveMarket(markets[i])) {
                 _resolveMarketManually(markets[i], finalPrices[i]);
@@ -453,8 +480,18 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         }
     }
 
-    function _resolveMarketManually(address _market, int64 _finalPrice) internal {
+    /// @notice owner can resolve market for a given market address with finalPrice
+    function resolveMarketAsOwner(address _market, int64 _finalPrice) external onlyOwner {
         require(canResolveMarket(_market), "Can not resolve");
+        _resolveMarketWithPrice(_market, _finalPrice);
+    }
+
+    function _resolveMarketManually(address _market, int64 _finalPrice) internal {
+        Direction direction = SpeedMarket(_market).direction();
+        int64 strikePrice = SpeedMarket(_market).strikePrice();
+        bool isUserWinner = (_finalPrice < strikePrice && direction == Direction.Down) ||
+            (_finalPrice > strikePrice && direction == Direction.Up);
+        require(canResolveMarket(_market) && !isUserWinner, "Can not resolve manually");
         _resolveMarketWithPrice(_market, _finalPrice);
     }
 
@@ -490,27 +527,13 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         emit MarketResolved(market, SpeedMarket(market).result(), SpeedMarket(market).isUserWinner());
     }
 
-    //////////// getters for active and matured markets/////////////////
-
-    /// @notice isKnownMarket checks if market is among matured or active markets
-    /// @param candidate Address of the market.
-    /// @return bool
-    function isKnownMarket(address candidate) public view returns (bool) {
-        return _activeMarkets.contains(candidate) || _maturedMarkets.contains(candidate);
+    /// @notice Transfer amount to destination address
+    function transferAmount(address _destination, uint _amount) external onlyOwner {
+        sUSD.safeTransfer(_destination, _amount);
+        emit AmountTransfered(_destination, _amount);
     }
 
-    /// @notice isActiveMarket checks if market is active market
-    /// @param candidate Address of the market.
-    /// @return bool
-    function isActiveMarket(address candidate) public view returns (bool) {
-        return _activeMarkets.contains(candidate);
-    }
-
-    /// @notice numActiveMarkets returns number of active markets
-    /// @return uint
-    function numActiveMarkets() external view returns (uint) {
-        return _activeMarkets.elements.length;
-    }
+    //////////// getters /////////////////
 
     /// @notice activeMarkets returns list of active markets
     /// @param index index of the page
@@ -518,12 +541,6 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
     /// @return address[] active market list
     function activeMarkets(uint index, uint pageSize) external view returns (address[] memory) {
         return _activeMarkets.getPage(index, pageSize);
-    }
-
-    /// @notice numMaturedMarkets returns number of mature markets
-    /// @return uint
-    function numMaturedMarkets() external view returns (uint) {
-        return _maturedMarkets.elements.length;
     }
 
     /// @notice maturedMarkets returns list of matured markets
@@ -534,23 +551,21 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         return _maturedMarkets.getPage(index, pageSize);
     }
 
-    /// @notice numActiveMarkets returns number of active markets per use
-    function numActiveMarketsPerUser(address user) external view returns (uint) {
-        return _activeMarketsPerUser[user].elements.length;
-    }
-
     /// @notice activeMarkets returns list of active markets per user
-    function activeMarketsPerUser(uint index, uint pageSize, address user) external view returns (address[] memory) {
+    function activeMarketsPerUser(
+        uint index,
+        uint pageSize,
+        address user
+    ) external view returns (address[] memory) {
         return _activeMarketsPerUser[user].getPage(index, pageSize);
     }
 
-    /// @notice numMaturedMarkets returns number of matured markets per use
-    function numMaturedMarketsPerUser(address user) external view returns (uint) {
-        return _maturedMarketsPerUser[user].elements.length;
-    }
-
     /// @notice maturedMarkets returns list of matured markets per user
-    function maturedMarketsPerUser(uint index, uint pageSize, address user) external view returns (address[] memory) {
+    function maturedMarketsPerUser(
+        uint index,
+        uint pageSize,
+        address user
+    ) external view returns (address[] memory) {
         return _maturedMarketsPerUser[user].getPage(index, pageSize);
     }
 
@@ -562,52 +577,42 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
             !SpeedMarket(market).resolved();
     }
 
-    /// @notice return all market data for an array of markets
-    function getMarketsData(address[] calldata marketsArray) external view returns (MarketData[] memory) {
-        MarketData[] memory markets = new MarketData[](marketsArray.length);
-        for (uint i = 0; i < marketsArray.length; i++) {
-            SpeedMarket market = SpeedMarket(marketsArray[i]);
-            markets[i].user = market.user();
-            markets[i].asset = market.asset();
-            markets[i].strikeTime = market.strikeTime();
-            markets[i].strikePrice = market.strikePrice();
-            markets[i].direction = market.direction();
-            markets[i].buyinAmount = market.buyinAmount();
-            markets[i].resolved = market.resolved();
-            markets[i].finalPrice = market.finalPrice();
-            markets[i].result = market.result();
-            markets[i].isUserWinner = market.isUserWinner();
-            if (marketHasCreatedAtAttribute[marketsArray[i]]) {
-                markets[i].createdAt = market.createdAt();
-            }
-        }
-        return markets;
+    /// @notice get lengths of all arrays
+    function getLengths(address user) external view returns (uint[5] memory) {
+        return [
+            _activeMarkets.elements.length,
+            _maturedMarkets.elements.length,
+            _activeMarketsPerUser[user].elements.length,
+            _maturedMarketsPerUser[user].elements.length,
+            lpFees.length
+        ];
     }
 
-    /// @notice return all risk data (direction, current and max) for both directions (Up and Down) by specified asset
-    function getDirectionalRiskPerAsset(bytes32 asset) external view returns (Risk[] memory) {
-        Direction[] memory directions = new Direction[](2);
-        directions[0] = Direction.Up;
-        directions[1] = Direction.Down;
-
-        Risk[] memory risks = new Risk[](directions.length);
-        for (uint i = 0; i < directions.length; i++) {
-            Direction currentDirection = directions[i];
-            risks[i].direction = currentDirection;
-            risks[i].current = currentRiskPerAssetAndDirection[asset][currentDirection];
-            risks[i].max = maxRiskPerAssetAndDirection[asset][currentDirection];
-        }
-
-        return risks;
+    /// @notice get parmas for create market
+    function getParams(bytes32 asset) external view returns (ISpeedMarketsAMM.Params memory) {
+        ISpeedMarketsAMM.Params memory params;
+        params.supportedAsset = supportedAsset[asset];
+        params.pythId = assetToPythId[asset];
+        params.safeBoxImpact = safeBoxImpact;
+        params.maximumPriceDelay = maximumPriceDelay;
+        return params;
     }
 
     //////////////////setters/////////////////
 
-    /// @notice Set mastercopy to use to create markets
+    /// @notice Set addresses used in AMM
     /// @param _mastercopy to use to create markets
-    function setMastercopy(address _mastercopy) external onlyOwner {
+    /// @param _speedMarketsAMMUtils address of speed markets AMM utils
+    /// @param _addressManager address manager contract
+    function setAMMAddresses(
+        address _mastercopy,
+        SpeedMarketsAMMUtils _speedMarketsAMMUtils,
+        address _addressManager
+    ) external onlyOwner {
         speedMarketMastercopy = _mastercopy;
-        emit MastercopyChanged(_mastercopy);
+        speedMarketsAMMUtils = _speedMarketsAMMUtils;
+        addressManager = IAddressManager(_addressManager);
+        emit AMMAddressesChanged(_mastercopy, _speedMarketsAMMUtils, _addressManager);
     }
 
     /// @notice Set minimum and maximum buyin amounts
@@ -631,18 +636,13 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
     }
 
     /// @notice whats the longest a price can be delayed
-    function setMaximumPriceDelay(uint64 _maximumPriceDelay) external onlyOwner {
+    function setMaximumPriceDelays(uint64 _maximumPriceDelay, uint64 _maximumPriceDelayForResolving) external onlyOwner {
         maximumPriceDelay = _maximumPriceDelay;
-        emit SetMaximumPriceDelay(maximumPriceDelay);
-    }
-
-    /// @notice whats the longest a price can be delayed when resolving
-    function setMaximumPriceDelayForResolving(uint64 _maximumPriceDelayForResolving) external onlyOwner {
         maximumPriceDelayForResolving = _maximumPriceDelayForResolving;
-        emit SetMaximumPriceDelayForResolving(maximumPriceDelayForResolving);
+        emit SetMaximumPriceDelays(_maximumPriceDelay, _maximumPriceDelayForResolving);
     }
 
-    /// @notice maximum open interest per asset
+    /// @notice maximum risk per asset
     function setMaxRiskPerAsset(bytes32 asset, uint _maxRiskPerAsset) external onlyOwner {
         maxRiskPerAsset[asset] = _maxRiskPerAsset;
         emit SetMaxRiskPerAsset(asset, _maxRiskPerAsset);
@@ -655,37 +655,33 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         emit SetMaxRiskPerAssetAndDirection(asset, _maxRiskPerAssetAndDirection);
     }
 
-    /// @notice set SafeBox params
-    function setSafeBoxParams(address _safeBox, uint _safeBoxImpact) external onlyOwner {
-        safeBox = _safeBox;
+    /// @notice set SafeBox and max skew impact
+    /// @param _safeBoxImpact skew impact
+    /// @param _maxSkewImpact skew impact
+    function setSafeBoxAndMaxSkewImpact(uint _safeBoxImpact, uint _maxSkewImpact) external onlyOwner {
         safeBoxImpact = _safeBoxImpact;
-        emit SetSafeBoxParams(_safeBox, _safeBoxImpact);
+        maxSkewImpact = _maxSkewImpact;
+        emit SafeBoxAndMaxSkewImpactChanged(_safeBoxImpact, _maxSkewImpact);
     }
 
-    /// @notice set LP fee
-    function setLPFee(uint _lpFee) external onlyOwner {
+    /// @notice set LP fee params
+    /// @param _timeThresholds array of time thresholds (minutes) for different fees in ascending order
+    /// @param _lpFees array of fees applied to each time frame defined in _timeThresholds
+    /// @param _lpFee default LP fee when there are no dynamic fees
+    function setLPFeeParams(
+        uint[] calldata _timeThresholds,
+        uint[] calldata _lpFees,
+        uint _lpFee
+    ) external onlyOwner {
+        require(_timeThresholds.length == _lpFees.length, "Times and fees must have the same length");
+        delete timeThresholdsForFees;
+        delete lpFees;
+        for (uint i = 0; i < _timeThresholds.length; i++) {
+            timeThresholdsForFees.push(_timeThresholds[i]);
+            lpFees.push(_lpFees[i]);
+        }
         lpFee = _lpFee;
-        emit SetLPFee(_lpFee);
-    }
-
-    /// @notice Set staking thales
-    function setStakingThales(address _stakingThales) external onlyOwner {
-        //TODO: dont set till StakingThalesBonusRewardsManager is ready for it
-        stakingThales = IStakingThales(_stakingThales);
-        emit SetStakingThales(_stakingThales);
-    }
-
-    /// @notice set referrals
-    /// @param _referrals contract for referrals storage
-    function setReferrals(address _referrals) external onlyOwner {
-        require(_referrals != address(0), "Can not be zero address");
-        referrals = _referrals;
-    }
-
-    /// @notice Set pyth
-    function setPyth(address _pyth) external onlyOwner {
-        pyth = IPyth(_pyth);
-        emit SetPyth(_pyth);
+        emit SetLPFeeParams(_timeThresholds, _lpFees, _lpFee);
     }
 
     /// @notice set whether an asset is supported
@@ -694,18 +690,21 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
         emit SetSupportedAsset(asset, _supported);
     }
 
-    /// @notice set multicollateral onramp contract
-    function setMultiCollateralOnOffRamp(address _onramper, bool enabled) external onlyOwner {
-        multiCollateralOnOffRamp = IMultiCollateralOnOffRamp(_onramper);
-        multicollateralEnabled = enabled;
-        emit SetMultiCollateralOnOffRamp(_onramper, enabled);
+    /// @notice set multi-collateral enabled
+    function setMultiCollateralOnOffRampEnabled(bool _enabled) external onlyOwner {
+        address multiCollateralAddress = addressManager.multiCollateralOnOffRamp();
+        if (multiCollateralAddress != address(0)) {
+            sUSD.approve(multiCollateralAddress, _enabled ? MAX_APPROVAL : 0);
+        }
+        multicollateralEnabled = _enabled;
+        emit MultiCollateralOnOffRampEnabled(_enabled);
     }
 
     /// @notice adding/removing whitelist address depending on a flag
     /// @param _whitelistAddress address that needed to be whitelisted/ ore removed from WL
     /// @param _flag adding or removing from whitelist (true: add, false: remove)
     function addToWhitelist(address _whitelistAddress, bool _flag) external onlyOwner {
-        require(_whitelistAddress != address(0) && whitelistedAddresses[_whitelistAddress] != _flag);
+        require(_whitelistAddress != address(0));
         whitelistedAddresses[_whitelistAddress] = _flag;
         emit AddedIntoWhitelist(_whitelistAddress, _flag);
     }
@@ -720,31 +719,40 @@ contract SpeedMarkets is ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
     //////////////////events/////////////////
 
     event MarketCreated(
-        address market,
-        address user,
-        bytes32 asset,
-        uint strikeTime,
-        int64 strikePrice,
-        Direction direction,
-        uint buyinAmount
+        address _market,
+        address _user,
+        bytes32 _asset,
+        uint _strikeTime,
+        int64 _strikePrice,
+        Direction _direction,
+        uint _buyinAmount
+    );
+    event MarketCreatedWithFees(
+        address _market,
+        address _user,
+        bytes32 _asset,
+        uint _strikeTime,
+        int64 _strikePrice,
+        Direction _direction,
+        uint _buyinAmount,
+        uint _safeBoxImpact,
+        uint _lpFee
     );
 
-    event MarketResolved(address market, Direction result, bool userIsWinner);
+    event MarketResolved(address _market, Direction _result, bool _userIsWinner);
 
-    event MastercopyChanged(address mastercopy);
+    event AMMAddressesChanged(address _mastercopy, SpeedMarketsAMMUtils _speedMarketsAMMUtils, address _addressManager);
     event AmountsChanged(uint _minBuyinAmount, uint _maxBuyinAmount);
     event TimesChanged(uint _minimalTimeToMaturity, uint _maximalTimeToMaturity);
     event SetAssetToPythID(bytes32 asset, bytes32 pythId);
-    event SetMaximumPriceDelay(uint _maximumPriceDelay);
-    event SetMaximumPriceDelayForResolving(uint _maximumPriceDelayForResolving);
+    event SetMaximumPriceDelays(uint _maximumPriceDelay, uint _maximumPriceDelayForResolving);
     event SetMaxRiskPerAsset(bytes32 asset, uint _maxRiskPerAsset);
     event SetMaxRiskPerAssetAndDirection(bytes32 asset, uint _maxRiskPerAssetAndDirection);
-    event SetSafeBoxParams(address _safeBox, uint _safeBoxImpact);
-    event SetLPFee(uint _lpFee);
-    event SetStakingThales(address _stakingThales);
-    event SetPyth(address _pyth);
+    event SafeBoxAndMaxSkewImpactChanged(uint _safeBoxImpact, uint _maxSkewImpact);
+    event SetLPFeeParams(uint[] _timeThresholds, uint[] _lpFees, uint _lpFee);
     event SetSupportedAsset(bytes32 asset, bool _supported);
     event AddedIntoWhitelist(address _whitelistAddress, bool _flag);
-    event SetMultiCollateralOnOffRamp(address _onramper, bool enabled);
+    event MultiCollateralOnOffRampEnabled(bool _enabled);
     event ReferrerPaid(address refferer, address trader, uint amount, uint volume);
+    event AmountTransfered(address _destination, uint _amount);
 }

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
 
+// external
 // external
 import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/math/MathUpgradeable.sol";
@@ -10,7 +11,7 @@ import "@openzeppelin/contracts-upgradeable/utils/math/SafeMathUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-import "@openzeppelin/contracts-4.4.1/proxy/Clones.sol";
+import "@openzeppelin/contracts/proxy/Clones.sol";
 
 import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
@@ -23,15 +24,19 @@ import "../utils/libraries/AddressSetLib.sol";
 
 import "../interfaces/IStakingThales.sol";
 import "../interfaces/IMultiCollateralOnOffRamp.sol";
-import "../interfaces/IReferrals.sol";
+// import "../interfaces/IContractDeployer.sol";
+import {IReferrals} from "../interfaces/IReferrals.sol";
+
 import "../interfaces/IAddressManager.sol";
 import "../interfaces/ISpeedMarketsAMM.sol";
-
+import "@matterlabs/zksync-contracts/l2/system-contracts/Constants.sol";
+import "@matterlabs/zksync-contracts/l2/system-contracts/libraries/SystemContractsCaller.sol";
 import "./SpeedMarket.sol";
 import "./SpeedMarketsAMMUtils.sol";
 
 /// @title An AMM for Thales speed markets
 contract SpeedMarketsAMM is Initializable, ProxyOwned, ProxyPausable, ProxyReentrancyGuard {
+
     using SafeERC20Upgradeable for IERC20Upgradeable;
     using AddressSetLib for AddressSetLib.AddressSet;
 
