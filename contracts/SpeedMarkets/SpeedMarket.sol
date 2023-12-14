@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 
-import "./SpeedMarketsAMM.sol";
+import "../interfaces/ISpeedMarketsAMM.sol";
 
 contract SpeedMarket {
     using SafeERC20Upgradeable for IERC20Upgradeable;
@@ -17,6 +17,8 @@ contract SpeedMarket {
         int64 _strikePrice;
         Direction _direction;
         uint _buyinAmount;
+        uint _safeBoxImpact;
+        uint _lpFee;
     }
 
     enum Direction {
@@ -35,12 +37,10 @@ contract SpeedMarket {
     int64 public finalPrice;
     Direction public result;
 
-    SpeedMarketsAMM public speedMarketsAMM;
+    ISpeedMarketsAMM public speedMarketsAMM;
 
-    address public owner;
-
-    address public add1;
-    address public add2;
+    uint public safeBoxImpact;
+    uint public lpFee;
 
     uint256 public createdAt;
 
@@ -48,22 +48,18 @@ contract SpeedMarket {
 
     bool public initialized = false;
 
-    constructor(address _add1, address _add2) {
-        owner = msg.sender;
-        add1 = _add1;
-        add2 = _add2;
-    }
-
-    function initialize(InitParams calldata params) external onlyOwner {
+    function initialize(InitParams calldata params) external {
         require(!initialized, "Speed market already initialized");
         initialized = true;
-        speedMarketsAMM = SpeedMarketsAMM(params._speedMarketsAMM);
+        speedMarketsAMM = ISpeedMarketsAMM(params._speedMarketsAMM);
         user = params._user;
         asset = params._asset;
         strikeTime = params._strikeTime;
         strikePrice = params._strikePrice;
         direction = params._direction;
         buyinAmount = params._buyinAmount;
+        safeBoxImpact = params._safeBoxImpact;
+        lpFee = params._lpFee;
         speedMarketsAMM.sUSD().approve(params._speedMarketsAMM, type(uint256).max);
         createdAt = block.timestamp;
     }
@@ -76,8 +72,10 @@ contract SpeedMarket {
 
         if (finalPrice < strikePrice) {
             result = Direction.Down;
-        } else {
+        } else if (finalPrice > strikePrice) {
             result = Direction.Up;
+        } else {
+            result = direction == Direction.Up ? Direction.Down : Direction.Up;
         }
 
         if (direction == result) {
@@ -95,10 +93,6 @@ contract SpeedMarket {
 
     modifier onlyAMM() {
         require(msg.sender == address(speedMarketsAMM), "only the AMM may perform these methods");
-        _;
-    }
-    modifier onlyOwner() {
-        require(msg.sender == owner, "only owner");
         _;
     }
 
