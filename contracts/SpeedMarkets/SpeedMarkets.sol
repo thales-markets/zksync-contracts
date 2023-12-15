@@ -8,6 +8,8 @@ import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
 
 // internal
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+
 import "../utils/proxy/solidity-0.8.0/ProxyReentrancyGuard.sol";
 import "../utils/proxy/solidity-0.8.0/ProxyOwned.sol";
 import "../utils/proxy/solidity-0.8.0/ProxyPausable.sol";
@@ -49,6 +51,8 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
         Direction result;
         uint buyinAmount;
         bool resolved;
+        uint safeBoxImpact;
+        uint lpFee;
     }
     
     struct TempData {
@@ -354,7 +358,7 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
             block.timestamp
         );
 
-        speedMarket[srm] = new SpeedMarketData(
+        speedMarket[srm] = SpeedMarketData(
             msg.sender,
             asset,
             strikeTime,
@@ -363,9 +367,9 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
             direction,
             direction,
             buyinAmount,
+            false,
             safeBoxImpact,
-            tempData.lpFeeWithSkew,
-            false
+            tempData.lpFeeWithSkew
         );
 
           // address user;
@@ -475,12 +479,12 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
 
         IPyth iPyth = IPyth(addressManager.pyth());
         bytes32[] memory priceIds = new bytes32[](1);
-        priceIds[0] = assetToPythId[SpeedMarket(market).asset()];
+        priceIds[0] = assetToPythId[speedMarket[market].asset];
         PythStructs.PriceFeed[] memory prices = iPyth.parsePriceFeedUpdates{value: iPyth.getUpdateFee(priceUpdateData)}(
             priceUpdateData,
             priceIds,
-            SpeedMarket(market).strikeTime(),
-            SpeedMarket(market).strikeTime() + maximumPriceDelayForResolving
+            speedMarket[market].strikeTime,
+            speedMarket[market].strikeTime + maximumPriceDelayForResolving
         );
 
         PythStructs.Price memory price = prices[0].price;
@@ -491,7 +495,7 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
     }
 
     /// @notice admin resolve market for a given market address with finalPrice
-    function resolveMarketManually(address _market, int64 _finalPrice) external isAddressWhitelisted {
+    function resolveMarketManually(bytes32 _market, int64 _finalPrice) external isAddressWhitelisted {
         _resolveMarketManually(_market, _finalPrice);
     }
 
@@ -513,9 +517,9 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
         _resolveMarketWithPrice(_market, _finalPrice);
     }
 
-    function _resolveMarketManually(address _market, int64 _finalPrice) internal {
-        Direction direction = SpeedMarket(_market).direction();
-        int64 strikePrice = SpeedMarket(_market).strikePrice();
+    function _resolveMarketManually(bytes32 _market, int64 _finalPrice) internal {
+        Direction direction = speedMarket[_market].direction;
+        int64 strikePrice = speedMarket[_market].strikePrice;
         bool isUserWinner = (_finalPrice < strikePrice && direction == Direction.Down) ||
             (_finalPrice > strikePrice && direction == Direction.Up);
         require(canResolveMarket(_market) && !isUserWinner, "Can not resolve manually");
@@ -523,19 +527,19 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
     }
 
     function _resolveMarketWithPrice(bytes32 market, int64 _finalPrice) internal {
-        SpeedMarket(market).resolve(_finalPrice);
+        _resolve(market, _finalPrice);
         _activeMarkets.remove(market);
         _maturedMarkets.add(market);
-        address user = SpeedMarket(market).user();
+        address user = speedMarket[market].user;
 
         if (_activeMarketsPerUser[user].contains(market)) {
             _activeMarketsPerUser[user].remove(market);
         }
         _maturedMarketsPerUser[user].add(market);
 
-        bytes32 asset = SpeedMarket(market).asset();
-        uint buyinAmount = SpeedMarket(market).buyinAmount();
-        Direction direction = SpeedMarket(market).direction();
+        bytes32 asset = speedMarket[market].asset;
+        uint buyinAmount = speedMarket[market].buyinAmount;
+        Direction direction = speedMarket[market].direction;
 
         if (currentRiskPerAssetAndDirection[asset][direction] > buyinAmount) {
             currentRiskPerAssetAndDirection[asset][direction] -= buyinAmount;
@@ -543,7 +547,7 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
             currentRiskPerAssetAndDirection[asset][direction] = 0;
         }
 
-        if (!SpeedMarket(market).isUserWinner()) {
+        if (!(speedMarket[market].direction == speedMarket[market].result)) {
             if (currentRiskPerAsset[asset] > 2 * buyinAmount) {
                 currentRiskPerAsset[asset] -= (2 * buyinAmount);
             } else {
@@ -551,8 +555,30 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
             }
         }
 
-        emit MarketResolved(market, SpeedMarket(market).result(), SpeedMarket(market).isUserWinner());
+        emit MarketResolved(market, speedMarket[market].result, speedMarket[market].direction == speedMarket[market].result);
     }
+
+    function _resolve(bytes32 _market, int64 _finalPrice) internal {
+        require(!speedMarket[_market].resolved, "already resolved");
+        require(block.timestamp > speedMarket[_market].strikeTime, "not ready to be resolved");
+        speedMarket[_market].resolved = true;
+        speedMarket[_market].finalPrice = _finalPrice;
+
+        if (_finalPrice < speedMarket[_market].strikePrice) {
+            speedMarket[_market].result = Direction.Down;
+        } else if (_finalPrice > speedMarket[_market].strikePrice) {
+            speedMarket[_market].result = Direction.Up;
+        } else {
+            speedMarket[_market].result = speedMarket[_market].direction == Direction.Up ? Direction.Down : Direction.Up;
+        }
+
+        if (speedMarket[_market].direction == speedMarket[_market].result) {
+            sUSD.safeTransfer(speedMarket[_market].user, 2*speedMarket[_market].buyinAmount);
+        }
+
+        // emit Resolved(_finalPrice, speedMarket[_market].result, speedMarket[_market].direction == speedMarket[_market].result);
+    }
+
 
     /// @notice Transfer amount to destination address
     function transferAmount(address _destination, uint _amount) external onlyOwner {
@@ -763,7 +789,7 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
         uint _lpFee
     );
 
-    event MarketResolved(address _market, Direction _result, bool _userIsWinner);
+    event MarketResolved(bytes32 _market, Direction _result, bool _userIsWinner);
 
     event AMMAddressesChanged(SpeedMarketsAMMUtils _speedMarketsAMMUtils, address _addressManager);
     event AmountsChanged(uint _minBuyinAmount, uint _maxBuyinAmount);

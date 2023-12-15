@@ -48,6 +48,10 @@ contract SpeedMarket {
 
     bool public initialized = false;
 
+    constructor(address _add1, address _add2) {
+        
+    }
+
     function initialize(InitParams calldata params) external {
         require(!initialized, "Speed market already initialized");
         initialized = true;
