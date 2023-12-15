@@ -9452,8 +9452,8 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@matterlabs/zksync-contracts/l2/system-contracts/BootloaderUtilities.sol": {
-      "lastModificationDate": 1695898440912,
-      "contentHash": "cf36b27c696f67d72e2eb3219d66ccd1",
+      "lastModificationDate": 1702640134468,
+      "contentHash": "4a9419ac878aeb5bb2ef011d674fade1",
       "sourceName": "@matterlabs/zksync-contracts/l2/system-contracts/BootloaderUtilities.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -11036,8 +11036,8 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/contracts/SpeedMarkets/SpeedMarkets.sol": {
-      "lastModificationDate": 1702639360144,
-      "contentHash": "e5d47df01002568b08ea3b1ca42333f3",
+      "lastModificationDate": 1702639719744,
+      "contentHash": "b1f6abeafe1d930687b7ecad89b1d7b4",
       "sourceName": "contracts/SpeedMarkets/SpeedMarkets.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -11081,9 +11081,9 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/proxy/Clones.sol",
         "@pythnetwork/pyth-sdk-solidity/IPyth.sol",
         "@pythnetwork/pyth-sdk-solidity/PythStructs.sol",
+        "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol",
         "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
         "../utils/proxy/solidity-0.8.0/ProxyReentrancyGuard.sol",
         "../utils/proxy/solidity-0.8.0/ProxyOwned.sol",
@@ -11094,9 +11094,6 @@
         "../interfaces/IReferrals.sol",
         "../interfaces/IAddressManager.sol",
         "../interfaces/ISpeedMarketsAMM.sol",
-        "./SpeedMarket.sol",
-        "@matterlabs/zksync-contracts/l2/system-contracts/Constants.sol",
-        "@matterlabs/zksync-contracts/l2/system-contracts/libraries/SystemContractsCaller.sol",
         "./SpeedMarketsAMMUtils.sol"
       ],
       "versionPragmas": [
