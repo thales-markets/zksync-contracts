@@ -373,16 +373,6 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
             tempData.lpFeeWithSkew
         );
 
-          // address user;
-        // bytes32 asset;
-        // uint64 strikeTime;
-        // int64 strikePrice;
-        // int64 finalPrice;
-        // Direction direction;
-        // Direction result;
-        // uint buyinAmount;
-        // bool resolved;
-
         sUSD.safeTransfer(address(this), buyinAmount * 2);
 
         _handleReferrerAndSafeBox(referrer, buyinAmount, contractsAddresses);
@@ -577,7 +567,6 @@ contract SpeedMarkets is Initializable, ProxyOwned, ProxyPausable, ProxyReentran
             sUSD.safeTransfer(speedMarket[_market].user, 2*speedMarket[_market].buyinAmount);
         }
 
-        // emit Resolved(_finalPrice, speedMarket[_market].result, speedMarket[_market].direction == speedMarket[_market].result);
     }
 
 
