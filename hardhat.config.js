@@ -152,7 +152,7 @@ module.exports = {
 		ignores: 'test-helpers',
 	},
 	zksolc: {
-		version: '1.3.14',
+		version: '1.3.19',
 		compilerSource: 'binary',
 		settings: {
 			//compilerPath: "zksolc",  // optional. Ignored for compilerSource "docker". Can be used if compiler is located in a specific folder

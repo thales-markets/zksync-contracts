@@ -28,14 +28,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -88,14 +88,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -141,14 +141,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -196,14 +196,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -249,14 +249,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -304,14 +304,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -357,14 +357,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -414,14 +414,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -467,14 +467,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -520,14 +520,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -575,14 +575,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -631,14 +631,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -694,14 +694,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -749,14 +749,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -806,14 +806,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -859,14 +859,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -915,14 +915,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -968,14 +968,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1023,14 +1023,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1078,14 +1078,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1136,14 +1136,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1198,14 +1198,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1251,14 +1251,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1304,14 +1304,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1366,14 +1366,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1441,14 +1441,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1494,14 +1494,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1547,14 +1547,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1600,14 +1600,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1657,14 +1657,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1691,7 +1691,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/Clones.sol": {
-      "lastModificationDate": 1688669657717,
+      "lastModificationDate": 1695891819733,
       "contentHash": "89c075565795af5e3e88fc75642a4af8",
       "sourceName": "@openzeppelin/contracts/proxy/Clones.sol",
       "solcConfig": {
@@ -1717,14 +1717,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1744,7 +1744,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1688669764018,
+      "lastModificationDate": 1695891819888,
       "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -1770,14 +1770,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1823,14 +1823,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1854,7 +1854,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/Address.sol": {
-      "lastModificationDate": 1688669653144,
+      "lastModificationDate": 1695891819726,
       "contentHash": "211ffd288c1588ba8c10eae668ca3c66",
       "sourceName": "@openzeppelin/contracts/utils/Address.sol",
       "solcConfig": {
@@ -1880,14 +1880,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1907,7 +1907,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol": {
-      "lastModificationDate": 1688669766750,
+      "lastModificationDate": 1695891819889,
       "contentHash": "aa849939a4ae83a4dcb2dca9b3e9e707",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
       "solcConfig": {
@@ -1933,14 +1933,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -1986,14 +1986,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2041,14 +2041,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2114,14 +2114,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2169,14 +2169,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2234,14 +2234,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2291,14 +2291,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2357,14 +2357,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2420,14 +2420,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2478,14 +2478,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2513,7 +2513,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol": {
-      "lastModificationDate": 1688669800579,
+      "lastModificationDate": 1695891819947,
       "contentHash": "f6f4fda16c536e57069af40a245c985e",
       "sourceName": "@openzeppelin/contracts/utils/math/SafeMath.sol",
       "solcConfig": {
@@ -2539,14 +2539,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2592,14 +2592,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2645,14 +2645,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2700,14 +2700,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2768,14 +2768,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2821,14 +2821,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2880,14 +2880,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2907,7 +2907,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/security/ReentrancyGuard.sol": {
-      "lastModificationDate": 1688669796350,
+      "lastModificationDate": 1695891819941,
       "contentHash": "1535f8c0c68463f8c1b5239f7584e71f",
       "sourceName": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
       "solcConfig": {
@@ -2933,14 +2933,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -2960,7 +2960,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1688669704198,
+      "lastModificationDate": 1695891819781,
       "contentHash": "3ae5166c6827a9cf1a7a462d1632b464",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -2986,14 +2986,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3017,7 +3017,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1688669791798,
+      "lastModificationDate": 1695891819928,
       "contentHash": "fe63409d8a06818b926cf89e0ea88b1b",
       "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
       "solcConfig": {
@@ -3043,14 +3043,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3070,7 +3070,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1688669658796,
+      "lastModificationDate": 1695891819737,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -3096,14 +3096,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3123,7 +3123,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1688669765599,
+      "lastModificationDate": 1695891819888,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -3149,14 +3149,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3178,7 +3178,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1688669803803,
+      "lastModificationDate": 1695891819952,
       "contentHash": "48686fc32a22a3754b8e63321857dd2a",
       "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
       "solcConfig": {
@@ -3204,14 +3204,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3234,7 +3234,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
-      "lastModificationDate": 1688669802194,
+      "lastModificationDate": 1695891819948,
       "contentHash": "9488ebd4daacfee8ad04811600d7d061",
       "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
       "solcConfig": {
@@ -3260,14 +3260,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3313,14 +3313,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3370,14 +3370,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3423,14 +3423,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3476,14 +3476,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3533,14 +3533,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3588,14 +3588,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3661,14 +3661,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3714,14 +3714,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3767,14 +3767,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3822,14 +3822,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3875,14 +3875,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3928,14 +3928,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -3981,14 +3981,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4034,14 +4034,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4087,14 +4087,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4140,14 +4140,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4193,14 +4193,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4220,7 +4220,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/utils/Initializable.sol": {
-      "lastModificationDate": 1688669788527,
+      "lastModificationDate": 1695891819921,
       "contentHash": "5efeb93e6b1c83c754da2846c2da51a7",
       "sourceName": "@openzeppelin/contracts/proxy/utils/Initializable.sol",
       "solcConfig": {
@@ -4246,14 +4246,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4301,14 +4301,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4364,14 +4364,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4427,14 +4427,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4486,14 +4486,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4546,14 +4546,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4606,14 +4606,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4663,14 +4663,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4722,14 +4722,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4787,14 +4787,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4842,14 +4842,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4895,14 +4895,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -4950,14 +4950,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5003,14 +5003,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5063,14 +5063,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5116,14 +5116,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5169,14 +5169,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5222,14 +5222,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5275,14 +5275,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5328,14 +5328,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5381,14 +5381,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5434,14 +5434,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5490,14 +5490,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5543,14 +5543,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5603,14 +5603,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5659,14 +5659,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5712,14 +5712,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5739,7 +5739,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1688669794175,
+      "lastModificationDate": 1695891819931,
       "contentHash": "5a20b2cad87ddb61c7a3a6af21289e28",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
@@ -5765,14 +5765,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5794,7 +5794,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol": {
-      "lastModificationDate": 1688669806063,
+      "lastModificationDate": 1695891819957,
       "contentHash": "8ffefb755605824cf730ce4092b2f581",
       "sourceName": "@openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol",
       "solcConfig": {
@@ -5820,14 +5820,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5851,7 +5851,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
-      "lastModificationDate": 1688669751064,
+      "lastModificationDate": 1695891819851,
       "contentHash": "b6bd23bf19e90b771337037706470933",
       "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
       "solcConfig": {
@@ -5877,14 +5877,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5904,7 +5904,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol": {
-      "lastModificationDate": 1688669702182,
+      "lastModificationDate": 1695891819778,
       "contentHash": "a127706394bead18392601a20d44867a",
       "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol",
       "solcConfig": {
@@ -5930,14 +5930,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -5963,7 +5963,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/interfaces/IERC1967.sol": {
-      "lastModificationDate": 1688669763458,
+      "lastModificationDate": 1695891819886,
       "contentHash": "d0d060231a45da7a1eecbb5cd286fa40",
       "sourceName": "@openzeppelin/contracts/interfaces/IERC1967.sol",
       "solcConfig": {
@@ -5989,14 +5989,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6016,7 +6016,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
-      "lastModificationDate": 1688669674675,
+      "lastModificationDate": 1695891819753,
       "contentHash": "2858d98e74e67987ec81b39605230b74",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC1822.sol",
       "solcConfig": {
@@ -6042,14 +6042,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6069,7 +6069,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
-      "lastModificationDate": 1688669803254,
+      "lastModificationDate": 1695891819950,
       "contentHash": "682f7dd1f2e1147c8390e7575deceb2d",
       "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
       "solcConfig": {
@@ -6095,14 +6095,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6122,7 +6122,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
-      "lastModificationDate": 1688669699926,
+      "lastModificationDate": 1695891819778,
       "contentHash": "3fc3c7c0a2956f36e766691bb9473b06",
       "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol",
       "solcConfig": {
@@ -6148,14 +6148,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6178,7 +6178,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/Proxy.sol": {
-      "lastModificationDate": 1688669795179,
+      "lastModificationDate": 1695891819938,
       "contentHash": "40b3d81a836d50ff47e03893dcaaf204",
       "sourceName": "@openzeppelin/contracts/proxy/Proxy.sol",
       "solcConfig": {
@@ -6204,14 +6204,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6231,7 +6231,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol": {
-      "lastModificationDate": 1688669654639,
+      "lastModificationDate": 1695891819730,
       "contentHash": "dc9dcb6e542154d9cfbfaece646c1092",
       "sourceName": "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol",
       "solcConfig": {
@@ -6257,14 +6257,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6314,14 +6314,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6343,7 +6343,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
-      "lastModificationDate": 1688669805648,
+      "lastModificationDate": 1695891819956,
       "contentHash": "1286aa8d056c7120d1a2da252e310d2f",
       "sourceName": "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol",
       "solcConfig": {
@@ -6369,14 +6369,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6399,7 +6399,7 @@
       ]
     },
     "/mnt/c/Users/user/Documents/Blockchain/Thales/git/zksync-contracts/zksync-contracts/node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol": {
-      "lastModificationDate": 1688669795772,
+      "lastModificationDate": 1695891819940,
       "contentHash": "9891986e27d357222a8ac8c0c13abe31",
       "sourceName": "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol",
       "solcConfig": {
@@ -6425,14 +6425,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6481,14 +6481,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6537,14 +6537,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6593,14 +6593,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6648,14 +6648,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6703,14 +6703,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6760,14 +6760,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6815,14 +6815,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6878,14 +6878,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6933,14 +6933,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -6988,14 +6988,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7045,14 +7045,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7100,14 +7100,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7153,14 +7153,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7208,14 +7208,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7266,14 +7266,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7321,14 +7321,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7376,14 +7376,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7431,14 +7431,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7484,14 +7484,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7537,14 +7537,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7590,14 +7590,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7645,14 +7645,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7706,14 +7706,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7762,14 +7762,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7815,14 +7815,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7868,14 +7868,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7924,14 +7924,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -7977,14 +7977,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8030,14 +8030,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8083,14 +8083,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8136,14 +8136,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8191,14 +8191,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8244,14 +8244,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8297,14 +8297,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8350,14 +8350,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8407,14 +8407,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8460,14 +8460,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8513,14 +8513,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8566,14 +8566,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8619,14 +8619,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8672,14 +8672,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8749,14 +8749,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8802,14 +8802,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8859,14 +8859,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8912,14 +8912,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -8968,14 +8968,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9021,14 +9021,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9093,14 +9093,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9146,14 +9146,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9199,14 +9199,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9254,14 +9254,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9307,14 +9307,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9360,14 +9360,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9422,14 +9422,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9478,14 +9478,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9536,14 +9536,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9589,14 +9589,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9642,14 +9642,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9695,14 +9695,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9748,14 +9748,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9801,14 +9801,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9854,14 +9854,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9907,14 +9907,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -9960,14 +9960,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10013,14 +10013,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10074,14 +10074,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10131,14 +10131,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10186,14 +10186,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10239,14 +10239,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10292,14 +10292,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10345,14 +10345,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10402,14 +10402,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10457,14 +10457,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10515,14 +10515,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10568,14 +10568,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10621,14 +10621,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10676,14 +10676,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10736,14 +10736,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10789,14 +10789,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10844,14 +10844,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10900,14 +10900,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -10953,14 +10953,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -11009,14 +11009,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -11062,14 +11062,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -11130,14 +11130,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
@@ -11183,14 +11183,14 @@
           "libraries": {}
         },
         "zksolc": {
-          "version": "1.3.14",
+          "version": "1.3.19",
           "compilerSource": "binary",
           "settings": {
             "optimizer": {
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.14",
+            "compilerPath": "/home/kiril/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.3.19",
             "experimental": {
               "dockerImage": "matterlabs/zksolc",
               "tag": "latest"
